@@ -1,3 +1,8 @@
+---
+name: novelist-female
+description: Use when user wants to write female-targeted web novels (romance, BL, GL, quick-pass, female dominance, mystery romance) with AI assistance and romance-line focused design
+---
+
 # Novelist - AI 女频小说写作 Skill
 
 全类型 AI 独立创作女频小说，支持先整体规划后逐章节完成，通过 SQLite 数据库追踪所有设定确保跨章节一致性。

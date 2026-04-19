@@ -1,3 +1,8 @@
+---
+name: novelist-male
+description: Use when user wants to write male-targeted web novels (xuanhuan, xianxia, dushi, mystery) with AI assistance, upgrade-fighting plots, and multi-agent review system
+---
+
 # Novelist - AI 男频小说写作 Skill
 
 全类型 AI 独立创作男频小说，支持先整体规划后逐章节完成，通过 SQLite 数据库追踪所有设定确保跨章节一致性。

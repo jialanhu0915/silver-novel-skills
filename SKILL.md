@@ -1,3 +1,8 @@
+---
+name: novelist
+description: Use when user wants to create AI-assisted web novels, including male-targeted (xuanhuan, xianxia, dushi, mystery) or female-targeted (romance, BL, GL, quick-pass, mystery romance) fiction
+---
+
 # Novelist - AI 小说写作 Skill
 
 ## 选择你的创作方向
