@@ -1,43 +1,91 @@
 # 章节创作流程
 
-## 创作前准备
+## 创作前准备（必须执行）
 
-### 1. 查询相关设定
+### 【新写模式 - 必要表查询】
+
+首次创作新章节时，必须查询以下表：
+
 ```sql
--- 获取小说基本信息
+-- 1. 查询小说基本信息
 SELECT * FROM novels WHERE id = ?;
 
--- 获取角色设定
-SELECT * FROM characters WHERE novel_id = ?;
+-- 2. 查询核心角色设定
+SELECT * FROM characters
+WHERE novel_id = ? AND role_type IN ('protagonist', 'antagonist');
 
--- 获取角色历史事件
-SELECT ce.*, c.name
-FROM character_events ce
-JOIN characters c ON ce.character_id = c.id
-WHERE c.novel_id = ?
-ORDER BY ce.created_at;
-
--- 获取势力状态
+-- 3. 查询势力状态
 SELECT * FROM factions WHERE novel_id = ?;
 
--- 获取物品状态
+-- 4. 查询物品状态
 SELECT i.*, c.name as holder_name
 FROM items i
 LEFT JOIN characters c ON i.current_holder = c.id
 WHERE i.novel_id = ?;
 
--- 获取章节大纲
+-- 5. 查询世界观框架
 SELECT * FROM frameworks
-WHERE novel_id = ? AND type LIKE '%plot%'
-ORDER BY id;
+WHERE novel_id = ? AND type LIKE '%world%';
 
--- 获取已埋伏笔
+-- 6. 查询已确定的情节节点
 SELECT * FROM frameworks
-WHERE novel_id = ? AND category = 'foreshadow';
+WHERE novel_id = ? AND type LIKE '%plot%';
 ```
 
-### 2. 确认本章要点
-- 本章涉及的角色
+### 【续写模式 - 必须执行】
+
+从第2章开始续写时，必须执行全量查询确保衔接：
+
+```sql
+-- 1. 查询最近10章概要
+SELECT chapter_number, title, summary, key_events
+FROM chapters
+WHERE novel_id = ?
+ORDER BY chapter_number DESC
+LIMIT 10;
+
+-- 2. 查询角色当前状态
+SELECT name, status, current_location, abilities
+FROM characters WHERE novel_id = ?;
+
+-- 3. 查询角色历史事件
+SELECT ce.*, c.name
+FROM character_events ce
+JOIN characters c ON ce.character_id = c.id
+WHERE c.novel_id = ?
+ORDER BY ce.created_at DESC
+LIMIT 30;
+
+-- 4. 查询势力状态
+SELECT * FROM factions WHERE novel_id = ?;
+
+-- 5. 查询物品状态
+SELECT i.*, c.name as holder_name
+FROM items i
+LEFT JOIN characters c ON i.current_holder = c.id
+WHERE i.novel_id = ?;
+
+-- 6. 查询待回收伏笔
+SELECT * FROM frameworks
+WHERE novel_id = ? AND category = 'foreshadow'
+AND status = 'pending';
+```
+
+### 【数据库状态确认】
+
+查询完成后，必须确认：
+- [ ] 角色当前战力/能力/状态已明确
+- [ ] 势力关系/地位已明确
+- [ ] 物品归属/位置已明确
+- [ ] 待回收伏笔已记录
+- [ ] 与前文衔接点已标记
+
+---
+
+## 章节创作提示词
+
+### 确认本章要点
+- 本章涉及的角色及其当前状态
 - 本章涉及的事件
 - 本章需要的伏笔
 - 需要在本章回收的伏笔
@@ -133,23 +181,59 @@ WHERE novel_id = ? AND category = 'foreshadow';
 （看似好心，实则暗示：你完了）
 ```
 
+### 章节标题规范
+
+男频章节标题必须反映本章核心看点：
+
+```
+✅ 合格标题（悬念型）：
+- "废物逆袭：命运的转折"
+- "金丹期的我，被逼到了绝境"
+- "他发现了一个秘密..."
+
+✅ 合格标题（事件名型）：
+- "宗门大比：实力的证明"
+- "秘境探险：意外的收获"
+- "炼丹大赛：黑马的崛起"
+
+✅ 合格标题（成就型）：
+- "突破！元婴期的门槛"
+- "一战成名：击败最强对手"
+- "逆转：绝境中的希望"
+
+❌ 不合格标题（禁止）：
+- "第X章"
+- "继续"
+- "发生了什么"
+```
+
 ### 输出格式
    ```
-   ## 第X章 标题
+   ## 第X章 【标题必须反映核心看点】
 
    [正文内容]
 
    ---
-   **本章要点**：
-   - 涉及角色：[列表]
-   - 关键事件：[描述]
-   - 埋下伏笔：[描述]
+
+   ### 章节元数据
+   - 字数：XXX
+   - 场景类型：[起承转合型/层层递进型/悬念揭示型/对手戏型/打脸型/日常缓冲型/...]
+   - 本章看点：[一句话描述]
+
+   ### 与前文衔接
+   - 承接：[上章关键点]
+   - 延续：[战力进展/势力关系/伏笔线]
 
    **反派塑造自查**：
    - [ ] 嘲讽有事实/逻辑依据
    - [ ] 无纯粹人身攻击
    - [ ] 反派有实际手段
    - [ ] 嘲讽有明确目的
+
+   **质量自检**：
+   - [ ] 标题反映核心看点 ✅/❌
+   - [ ] 与前文衔接 ✅/❌
+   - [ ] 设定一致 ✅/❌
    ```
 ```
 

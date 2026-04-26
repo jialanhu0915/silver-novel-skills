@@ -6,6 +6,72 @@
 
 ---
 
+## 零、创作前准备（必须执行）
+
+### 【新写模式 - 必要表查询】
+
+首次创作新章节时，必须查询以下表：
+
+```sql
+-- 1. 查询小说基本信息
+SELECT * FROM novels WHERE id = ?;
+
+-- 2. 查询核心角色设定
+SELECT * FROM characters
+WHERE novel_id = ? AND role_type IN ('protagonist', 'female_lead', 'antagonist');
+
+-- 3. 查询世界观框架
+SELECT * FROM frameworks
+WHERE novel_id = ? AND type LIKE '%world%';
+
+-- 4. 查询已确定的情节节点
+SELECT * FROM frameworks
+WHERE novel_id = ? AND type LIKE '%plot%';
+```
+
+### 【续写模式 - 必须执行】
+
+从第2章开始续写时，必须查询以下表确保衔接：
+
+```sql
+-- 1. 查询最近10章概要
+SELECT chapter_number, title, summary, key_events, relationship_stage
+FROM chapters
+WHERE novel_id = ?
+ORDER BY chapter_number DESC
+LIMIT 10;
+
+-- 2. 查询角色当前状态
+SELECT name, status, current_location, relationships
+FROM characters WHERE novel_id = ?;
+
+-- 3. 查询待回收伏笔
+SELECT * FROM frameworks
+WHERE novel_id = ? AND category = 'foreshadow'
+AND status = 'pending';
+
+-- 4. 查询感情线状态
+SELECT * FROM romance_lines WHERE novel_id = ?;
+
+-- 5. 查询角色历史事件
+SELECT ce.*, c.name
+FROM character_events ce
+JOIN characters c ON ce.character_id = c.id
+WHERE c.novel_id = ?
+ORDER BY ce.created_at DESC
+LIMIT 20;
+```
+
+### 【数据库状态确认】
+
+查询完成后，必须确认：
+- [ ] 角色性格/背景/目标已明确
+- [ ] 感情线当前阶段已确认
+- [ ] 待回收伏笔已记录
+- [ ] 与前文衔接点已标记
+
+---
+
 ## 一、女频章节结构原则
 
 ### 1. 感情线优先 (ROMANCE LINE PRIORITY)
@@ -154,6 +220,10 @@ Chapter X: 关键事件
 - [ ] 角色是否在性格上行动？
 - [ ] 是否有内心独白？
 - [ ] 是否包含甜蜜时刻？
+- [ ] **对话不超过40%**（女频易对话过多）
+- [ ] **每千字≥3处动作描写**
+- [ ] **情感场景≥2处微表情暗示**
+- [ ] **每场景有环境描写**
 
 ### 写作后
 
@@ -166,42 +236,58 @@ Chapter X: 关键事件
 
 ## 六、章节输出格式
 
+### 章节标题规范
+
+女频章节标题必须反映本章核心看点：
+
+```
+✅ 合格标题（感情进展暗示型）：
+- "暧昧：不经意的触碰"
+- "误会：说出口的话"
+- "心动的瞬间"
+- "他眼中的温柔..."
+- "她的眼泪"
+- "靠近的一步"
+
+✅ 合格标题（情绪暗示型）：
+- "夜深人静时"
+- "沉默的午后"
+- "心跳的声音"
+- "说不出口的话"
+
+❌ 不合格标题（禁止）：
+- "第X章"
+- "继续"
+- "后续发展"
+- "发生了什么"
+```
+
+### 章节正文输出格式
+
 ```markdown
-## 第X章创作记录
+## 第X章 【标题必须反映核心看点】
 
-### 基本信息
+【正文内容...】
+
+---
+
+### 章节元数据
 - 字数：XXX
-- 视角：[单主角/双视角/群像]
+- 场景类型：[感情推进型/误会冲突型/甜蜜互动型/日常缓冲型/...]
 - 关系阶段：[当前阶段]
+- 本章看点：[一句话描述]
 
-### 本章感情线进展
-- 上章结束：[状态]
-- 本章进展：[具体进展]
-- 下章目标：[预期进展]
-
-### 本章关键事件
-- [事件1]
-- [事件2]
-
-### 甜点记录
-- [甜蜜时刻1]
-- [甜蜜时刻2]
-
-### 角色状态
-- 主角A：[状态变化]
-- 主角B：[状态变化]
-- 男配（如有）：[状态]
-
-### 伏笔埋设
-- [新伏笔1]
-- [伏笔2]
+### 与前文衔接
+- 承接：[上章关键点]
+- 延续：[感情线/剧情线]
 
 ### 质量自检
-- [ ] 感情线推进 ✅/❌
+- [ ] 标题反映核心看点 ✅/❌
+- [ ] 感情线有推进 ✅/❌
 - [ ] 角色一致 ✅/❌
 - [ ] 甜点到位 ✅/❌
 - [ ] 比例合理 ✅/❌
-```
+- [ ] 与前文衔接 ✅/❌
 
 ---
 

@@ -121,8 +121,7 @@ description: Use when user wants to write male-targeted web novels (xuanhuan, xi
 ```
 male/
 ├── SKILL.md                    # 主技能文件
-├── agents/review/             # 男频专项（如有）
-├── templates/
+├── templates/                  # 男频专项模板
 │   ├── protagonist_design.md         # 主角设计
 │   ├── antagonist_design.md         # 反派设计
 │   ├── goldfinger_design.md         # 金手指设计
@@ -146,16 +145,18 @@ shared/
 │   │   ├── worldbuilder.md
 │   │   ├── charactercraft.md
 │   │   └── plotarchitect.md
-│   └── review/                  # 通用评测Agents
+│   └── review/                # 通用评测Agents
 │       ├── logic_checker.md
+│       ├── character_judge.md
+│       ├── female_character_judge.md
 │       ├── pace_critic.md
 │       ├── foreshadow_hunter.md
 │       ├── info_auditor.md
 │       ├── goldfinger_checker.md
 │       ├── climax_checker.md
 │       ├── supporting_checker.md
-│       ├── character_judge.md
-│       └── female_character_judge.md
+│       ├── description_quality_agent.md  # 描写质量评测
+│       └── plot_structure_agent.md       # 剧情结构评测
 ├── templates/
 │   ├── character_relationship_network.md
 │   └── supporting_characters.md
@@ -165,11 +166,12 @@ shared/
 
 ---
 
-## 九维评测体系
+## 十一维评测体系
 
 | 评测Agent | 评测维度 | 说明 |
 |-----------|----------|------|
 | LogicChecker | 逻辑一致性 | 时间线/规则/因果/常识 |
+| DescriptionQualityAgent | 描写质量 | 对话比例/动作/心理/微表情/环境 |
 | CharacterJudge | 人物塑造 | 行为/台词/情感/关系 |
 | FemaleCharacterJudge | 女性角色 | 独立目标/成长/选择/底线 |
 | PaceCritic | 节奏把控 | 起伏/密度/开篇/结尾 |
@@ -178,6 +180,7 @@ shared/
 | GoldfingerChecker | 金手指使用 | 正确使用/代价/失败/依赖 |
 | ClimaxChecker | 爽点设计 | 铺垫/代价/密度/类型 |
 | SupportingChecker | 配角价值 | 独立目标/困境/工具人/平等 |
+| PlotStructureAgent | 剧情结构 | 场景多样性/标题规范/衔接连贯 |
 
 ---
 

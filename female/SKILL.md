@@ -230,22 +230,34 @@ shared/
 
 ---
 
-## 十维评测体系
+## 十四维评测体系
+
+> 注：主流程13维，BL/GL小说加2维专项
+
+### 主流程（十三维）
 
 | 评测Agent | 评测维度 | 说明 |
 |-----------|----------|------|
 | LogicChecker | 逻辑一致性 | 时间线/规则/因果/常识 |
+| DescriptionQualityAgent | 描写质量 | 对话比例/动作/心理/微表情/环境 |
 | CharacterJudge | 人物塑造 | 行为/台词/情感/关系 |
 | MaleRolesJudge | 男性角色独立性 | 独立目标/成长/非工具化 |
+| FemaleCharacterJudge | 女性角色 | 独立目标/成长/选择/底线 |
 | RomanceLineJudge | 感情线质量 | 推拉张力/甜虐平衡/情感递进 |
-| BLRelationshipJudge | 耽美关系 | 攻受独立/关系动态/情感真实性 |
-| GLRelationshipJudge | 百合关系 | 女性视角/情感细腻/真实性 |
 | PaceCritic | 节奏把控 | 起伏/密度/开篇/结尾 |
 | ForeshadowHunter | 伏笔呼应 | 伏笔回收/埋设/呼应 |
 | InfoAuditor | 信息交代 | 清晰/冗余/缺失/展示 |
 | GoldfingerChecker | 金手指使用 | 正确使用/代价/失败/依赖 |
 | ClimaxChecker | 爽点设计 | 铺垫/代价/密度/类型 |
 | SupportingChecker | 配角价值 | 独立目标/困境/工具人/平等 |
+| PlotStructureAgent | 剧情结构 | 场景多样性/标题规范/衔接连贯 |
+
+### BL/GL专项（条件调用）
+
+| 评测Agent | 适用 | 说明 |
+|-----------|------|------|
+| BLRelationshipJudge | 耽美 | 攻受独立/关系动态/情感真实性 |
+| GLRelationshipJudge | 百合 | 女性视角/情感细腻/真实性 |
 
 ---
 
