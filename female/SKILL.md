@@ -194,6 +194,8 @@ female/
 │   ├── female_goldfinger_design.md   # 女频金手指
 │   └── genres/
 │       ├── romance_modern.md        # 现代言情
+│       ├── ancient_romance.md        # 古代言情
+│       ├── female_xianxia.md        # 女频仙侠
 │       ├── boys_love.md             # 耽美
 │       ├── girls_love.md            # 百合
 │       ├── female_dominance.md      # 女尊
@@ -220,25 +222,37 @@ shared/
 │       ├── climax_checker.md
 │       ├── supporting_checker.md
 │       ├── character_judge.md
-│       └── female_character_judge.md
+│       ├── female_character_judge.md
+│       ├── conflict_checker.md     # 冲突质量评测
+│       ├── pov_checker.md         # 叙事视角评测
+│       ├── description_quality_agent.md
+│       └── plot_structure_agent.md
 ├── templates/
 │   ├── character_relationship_network.md
-│   └── supporting_characters.md
+│   ├── supporting_characters.md
+│   └── writing_craft/              # 写作技法模块
+│       ├── emotional_craft.md
+│       ├── dialogue_craft.md
+│       ├── scene_craft.md
+│       ├── depth_balance.md
+│       ├── narrative_pov.md
+│       └── world_craft.md
 └── database/
     └── schema.sql
 ```
 
 ---
 
-## 十四维评测体系
+## 十五维评测体系
 
-> 注：主流程13维，BL/GL小说加2维专项
+> 注：主流程15维，BL/GL小说加2维专项
 
-### 主流程（十三维）
+### 主流程（十五维）
 
 | 评测Agent | 评测维度 | 说明 |
 |-----------|----------|------|
 | LogicChecker | 逻辑一致性 | 时间线/规则/因果/常识 |
+| ConflictChecker | 冲突质量 | 冲突分类/层次递进/代价感 |
 | DescriptionQualityAgent | 描写质量 | 对话比例/动作/心理/微表情/环境 |
 | CharacterJudge | 人物塑造 | 行为/台词/情感/关系 |
 | MaleRolesJudge | 男性角色独立性 | 独立目标/成长/非工具化 |
@@ -249,6 +263,7 @@ shared/
 | InfoAuditor | 信息交代 | 清晰/冗余/缺失/展示 |
 | GoldfingerChecker | 金手指使用 | 正确使用/代价/失败/依赖 |
 | ClimaxChecker | 爽点设计 | 铺垫/代价/密度/类型 |
+| PovChecker | 叙事视角 | POV类型/一致性/摄像头主角 |
 | SupportingChecker | 配角价值 | 独立目标/困境/工具人/平等 |
 | PlotStructureAgent | 剧情结构 | 场景多样性/标题规范/衔接连贯 |
 

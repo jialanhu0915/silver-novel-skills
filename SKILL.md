@@ -65,7 +65,21 @@ shared/
 │       ├── climax_checker.md
 │       ├── supporting_checker.md
 │       ├── character_judge.md
-│       └── female_character_judge.md
+│       ├── female_character_judge.md
+│       ├── conflict_checker.md       # 冲突质量评测
+│       ├── pov_checker.md            # 叙事视角评测
+│       ├── description_quality_agent.md
+│       └── plot_structure_agent.md
+├── templates/
+│   ├── writing_craft/              # 写作技法模块
+│   │   ├── emotional_craft.md      # 情感渲染技法
+│   │   ├── dialogue_craft.md       # 对白设计技法
+│   │   ├── scene_craft.md          # 场景感染力
+│   │   ├── depth_balance.md        # 深度与爽感平衡
+│   │   ├── narrative_pov.md        # 叙事视角技法
+│   │   └── world_craft.md          # 世界观构建技法
+│   ├── character_relationship_network.md
+│   └── supporting_characters.md
 ├── templates/
 │   ├── character_relationship_network.md
 │   └── supporting_characters.md
@@ -114,12 +128,14 @@ Novel-Skills/
 │   │   ├── female_goldfinger_design.md
 │   │   ├── antagonist_face_slapping_female.md
 │   │   └── genres/
-│   │       ├── romance_modern.md
-│   │       ├── boys_love.md
-│   │       ├── girls_love.md
-│   │       ├── female_dominance.md
-│   │       ├── quick_pass.md
-│   │       └── mystery_romance.md
+│   │       ├── romance_modern.md       # 现代言情
+│   │       ├── ancient_romance.md      # 古代言情
+│   │       ├── female_xianxia.md       # 女频仙侠
+│   │       ├── boys_love.md            # 耽美
+│   │       ├── girls_love.md            # 百合
+│   │       ├── female_dominance.md     # 女尊
+│   │       ├── quick_pass.md           # 快穿/穿书
+│   │       └── mystery_romance.md      # 悬疑恋爱
 │   └── prompts/          # 女频流程提示词
 │       ├── planning_flow.md
 │       ├── review_flow.md
@@ -169,13 +185,17 @@ Novel-Skills/
 | Agent | 维度 |
 |-------|------|
 | LogicChecker | 逻辑一致性 |
+| ConflictChecker | 冲突质量 |
+| DescriptionQualityAgent | 描写质量 |
 | CharacterJudge | 人物塑造 |
 | PaceCritic | 节奏把控 |
 | ForeshadowHunter | 伏笔呼应 |
 | InfoAuditor | 信息交代 |
 | GoldfingerChecker | 金手指使用 |
 | ClimaxChecker | 爽点设计 |
+| PovChecker | 叙事视角 |
 | SupportingChecker | 配角价值 |
+| PlotStructureAgent | 剧情结构 |
 
 ---
 
