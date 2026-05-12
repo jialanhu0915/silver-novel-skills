@@ -114,74 +114,88 @@ Novel-Skills/
 Novel-Skills
 │
 ├── male/                           # 男频系统
-│   ├── agents/review/              # 男频专项评测
+│   ├── SKILL.md                    # 男频创作入口
 │   ├── templates/                 # 男频专项模板
-│   │   ├── protagonist_design.md
-│   │   ├── antagonist_design.md
-│   │   ├── goldfinger_design.md
-│   │   ├── climax_design.md
-│   │   └── genres/                # 题材专项
-│   │       ├── xuanhuan.md
-│   │       ├── xianxia.md
-│   │       ├── dushi.md
-│   │       ├── mystery.md
-│   │       ├── entertainment.md
-│   │       ├── gaming.md
-│   │       ├── horror.md
-│   │       ├── scifi.md
-│   │       ├── transmigration.md
-│   │       └── urban_fantasy.md
-│   └── prompts/                    # 创作流程提示词
+│   │   ├── protagonist_design.md          # 男频主角设计模板
+│   │   ├── antagonist_design.md          # 反派角色设计模板
+│   │   ├── goldfinger_design.md          # 金手指（特殊能力）设计模板
+│   │   ├── climax_design.md               # 高潮/爽点设计模板
+│   │   ├── female_characters.md          # 女性角色设计模板
+│   │   ├── antagonist_face_slapping.md   # 反派打脸场景设计模板
+│   │   └── genres/                        # 题材专项模板
+│   │       ├── xuanhuan.md               # 玄幻题材模板
+│   │       ├── xianxia.md                # 仙侠题材模板
+│   │       ├── dushi.md                  # 都市题材模板
+│   │       ├── mystery.md                # 悬疑题材模板
+│   │       ├── scifi.md                  # 科幻题材模板
+│   │       ├── gaming.md                 # 游戏题材模板
+│   │       ├── historical.md             # 历史题材模板
+│   │       ├── urban_fantasy.md          # 都市异能题材模板
+│   │       ├── transmigration.md         # 穿越题材模板
+│   │       ├── horror.md                 # 恐怖题材模板
+│   │       └── entertainment.md          # 娱乐明星题材模板
+│   └── prompts/                          # 男频创作流程提示词
+│       ├── planning_flow.md              # 世界观与大纲规划流程
+│       ├── chapter_flow.md               # 单章创作流程
+│       └── review_flow.md                # 质量评测流程
 │
-├── female/                         # 女频系统
-│   ├── agents/review/              # 女频专项评测
-│   │   ├── male_roles_judge.md    # 【Critical】男性角色独立性
-│   │   ├── romance_line_judge.md   # 感情线质量
-│   │   ├── bl_relationship_judge.md
-│   │   └── gl_relationship_judge.md
-│   ├── templates/                 # 女频专项模板
-│   │   ├── romance_modern.md       # 现代言情
-│   │   ├── ancient_romance.md      # 古代言情
-│   │   ├── female_xianxia.md       # 女频仙侠
-│   │   ├── boys_love.md            # 耽美
-│   │   ├── girls_love.md           # 百合
-│   │   ├── female_dominance.md     # 女尊
-│   │   ├── quick_pass.md           # 快穿/穿书
-│   │   └── mystery_romance.md      # 悬疑恋爱
-│   └── prompts/
+├── female/                          # 女频系统
+│   ├── SKILL.md                     # 女频创作入口
+│   ├── agents/review/               # 女频专项评测Agents
+│   │   ├── male_roles_judge.md     # 【Critical】男性角色独立性评测
+│   │   ├── romance_line_judge.md   # 感情线质量评测
+│   │   ├── bl_relationship_judge.md # 耽美关系专项评测
+│   │   └── gl_relationship_judge.md # 百合关系专项评测
+│   ├── templates/                  # 女频专项模板
+│   │   ├── protagonist_female.md           # 女频女主设计模板
+│   │   ├── dual_protagonist.md             # 双主角设计模板
+│   │   ├── romance_line.md                 # 感情线设计模板
+│   │   ├── female_goldfinger_design.md     # 女频金手指设计模板
+│   │   ├── antagonist_face_slapping_female.md # 女频反派打脸模板
+│   │   └── genres/                        # 题材专项模板
+│   │       ├── romance_modern.md          # 现代言情题材模板
+│   │       ├── ancient_romance.md         # 古代言情题材模板
+│   │       ├── female_xianxia.md          # 女频仙侠题材模板
+│   │       ├── boys_love.md               # 耽美题材模板
+│   │       ├── girls_love.md              # 百合题材模板
+│   │       ├── female_dominance.md        # 女尊题材模板
+│   │       ├── quick_pass.md              # 快穿/穿书题材模板
+│   │       └── mystery_romance.md          # 悬疑恋爱题材模板
+│   └── prompts/                          # 女频创作流程提示词
+│       ├── planning_flow.md              # 世界观与大纲规划流程
+│       ├── review_flow.md                # 质量评测流程
+│       └── female_chapter_flow.md        # 女频单章创作流程
 │
-└── shared/                         # 共享资源
+└── shared/                          # 共享资源（男女频通用）
     ├── agents/
-    │   ├── framework/              # 框架构建
-    │   │   ├── worldbuilder.md
-    │   │   ├── charactercraft.md
-    │   │   └── plotarchitect.md
-    │   └── review/                 # 通用评测
-    │       ├── logic_checker.md
-    │       ├── pace_critic.md
-    │       ├── foreshadow_hunter.md
-    │       ├── info_auditor.md
-    │       ├── goldfinger_checker.md
-    │       ├── climax_checker.md
-    │       ├── supporting_checker.md
-    │       ├── character_judge.md
-    │       ├── female_character_judge.md
-    │       ├── conflict_checker.md
-    │       ├── pov_checker.md
-    │       ├── description_quality_agent.md
-    │       └── plot_structure_agent.md
+    │   ├── framework/              # 框架构建Agents
+    │   │   ├── worldbuilder.md     # 世界观与设定构建
+    │   │   ├── charactercraft.md   # 角色塑造与人物弧光设计
+    │   │   └── plotarchitect.md    # 情节结构与节奏把控
+    │   └── review/                # 通用评测Agents
+    │       ├── logic_checker.md            # 逻辑一致性评测
+    │       ├── pace_critic.md              # 节奏把控评测
+    │       ├── foreshadow_hunter.md        # 伏笔呼应评测
+    │       ├── info_auditor.md             # 信息交代评测
+    │       ├── goldfinger_checker.md       # 金手指使用评测
+    │       ├── climax_checker.md           # 爽点设计评测
+    │       ├── supporting_checker.md       # 配角价值评测
+    │       ├── character_judge.md          # 人物塑造评测
+    │       ├── female_character_judge.md   # 女性角色塑造评测
+    │       ├── conflict_checker.md         # 冲突质量评测
+    │       ├── pov_checker.md              # 叙事视角评测
+    │       ├── description_quality_agent.md # 描写质量评测
+    │       └── plot_structure_agent.md      # 剧情结构评测
     └── templates/
-        ├── character_relationship_network.md
-        ├── supporting_characters.md
-        └── writing_craft/              # 写作技法模块
-            ├── emotional_craft.md
-            ├── dialogue_craft.md
-            ├── scene_craft.md
-            ├── depth_balance.md
-            ├── narrative_pov.md
-            └── world_craft.md
-        ├── character_relationship_network.md
-        └── supporting_characters.md
+        ├── character_relationship_network.md  # 角色关系网络模板
+        ├── supporting_characters.md          # 配角设计模板
+        └── writing_craft/                   # 写作技法模块
+            ├── emotional_craft.md           # 情感渲染技法
+            ├── dialogue_craft.md            # 对白与台词设计技法
+            ├── scene_craft.md               # 场景感染力技法
+            ├── depth_balance.md              # 深度与爽感平衡技法
+            ├── narrative_pov.md              # 叙事视角技法
+            └── world_craft.md               # 世界观构建技法
 ```
 
 ---
