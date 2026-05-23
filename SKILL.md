@@ -3,11 +3,26 @@ name: sliver-novel-skills
 description: Use when user wants to create AI-assisted web novels, including male-targeted (xuanhuan, xianxia, dushi, mystery etc.) or female-targeted (romance, BL, GL, quick-pass, mystery romance etc.) fiction
 ---
 
-# Sliver-novel-skills - AI 小说写作 Skill
+# Sliver-Novel-Skills - AI 小说写作 Skill
 
-## 选择创作方向
+**角色：** 你是与用户直接交流的 AI 小说架构师，在对话中引导创作流程，同时后台使用 Read 工具加载对应的工作流文件。
 
-引导用户选择创作方向。如果用户未明确方向，先询问用户偏好再继续。根据用户选择加载对应子技能。
+---
+
+## 第一步：确定创作方向
+
+首先确认用户的创作方向。根据用户的初始输入，选择以下路径：
+
+- **用户已明确方向** → 直接进入对应流程（男频/女频）
+- **用户已有大纲或设定** → 确认现有内容后跳过阶段一（规划），直接进入阶段二（逐章创作）
+- **用户尚未明确** → 输出以下引导语，等待回复：
+
+> 你好！请选择你的创作方向 — 男频（玄幻/仙侠/都市/悬疑等）还是女频（言情/耽美/百合/快穿等）？我会引导你完成小说创作！
+
+**异常处理：**
+- 用户拒绝选择或提供无效输入 → 解释男女频分类对加载不同创作模板的必要性，请其尽量选择一个偏向
+- 用户提出的题材不属于网文范畴（如纯文学、纪实文学） → 告知本系统专精于商业网文创作，建议调整方向
+- 用户需求跨越男女频（如女强升级流、男主言情向） → 确认侧重点，根据主导元素选择主流程，同时辅以另一方的核心专项模板。例如：男主言情向加载男频主流程 + 女频 `romance_line.md`；女强升级流加载女频主流程 + 男频 `goldfinger_design.md`
 
 ---
 
@@ -22,7 +37,7 @@ description: Use when user wants to create AI-assisted web novels, including mal
 - 多维度评测保障质量
 
 **加载男频技能：**
-用户确认选择男频后，读取 `male/guide.md` 获取男频完整创作流程，按流程推进。
+用户确认选择男频后，使用 Read 工具读取 `male/guide.md` 获取男频完整创作流程，按流程推进。
 
 ---
 
@@ -37,48 +52,20 @@ description: Use when user wants to create AI-assisted web novels, including mal
 - 叙事平衡（根据类型调整）
 
 **加载女频技能：**
-用户确认选择女频后，读取 `female/guide.md` 获取女频完整创作流程，按流程推进。
+用户确认选择女频后，使用 Read 工具读取 `female/guide.md` 获取女频完整创作流程，按流程推进。
 
 ---
 
 ## 共享资源
 
-无论选择男频还是女频，以下资源为两者共享：
+无论选择男频还是女频，以下共享资源在对应阶段按需加载（具体加载时机见下方「快速开始」中各阶段的说明）：
 
-```
-shared/
-├── agents/
-│   ├── framework/          # 框架构建Agents
-│   │   ├── worldbuilder.md
-│   │   ├── charactercraft.md
-│   │   └── plotarchitect.md
-│   └── review/             # 通用评测Agents
-│       ├── logic_checker.md
-│       ├── pace_critic.md
-│       ├── foreshadow_hunter.md
-│       ├── info_auditor.md
-│       ├── goldfinger_checker.md
-│       ├── climax_checker.md
-│       ├── supporting_checker.md
-│       ├── character_judge.md
-│       ├── female_character_judge.md
-│       ├── conflict_checker.md       # 冲突质量评测
-│       ├── pov_checker.md            # 叙事视角评测
-│       ├── description_quality_agent.md
-│       └── plot_structure_agent.md
-├── templates/
-│   ├── writing_craft/              # 写作技法模块
-│   │   ├── emotional_craft.md      # 情感渲染技法
-│   │   ├── dialogue_craft.md       # 对白设计技法
-│   │   ├── scene_craft.md          # 场景感染力
-│   │   ├── depth_balance.md        # 深度与爽感平衡
-│   │   ├── narrative_pov.md        # 叙事视角技法
-│   │   └── world_craft.md          # 世界观构建技法
-│   ├── character_relationship_network.md  # 角色关系网络模板
-│   └── supporting_characters.md           # 配角设计模板
-└── database/
-    └── schema.sql
-```
+- **框架构建 Agent**（规划阶段加载）：`shared/agents/framework/` — worldbuilder / charactercraft / plotarchitect
+- **通用评测 Agent**（评测阶段加载）：`shared/agents/review/` — 13 个评测 Agent
+- **写作技法模块**（创作阶段按需加载）：`shared/templates/writing_craft/` — 6 个技法模块
+- **通用模板**（规划阶段按需加载）：角色关系网络 / 配角设计
+
+完整的文件树结构见下方「系统架构」章节。
 
 ---
 
@@ -177,17 +164,89 @@ Novel-Skills/
 
 ## 快速开始
 
-### 男频创作
+> **对话轮次规则：** 标有 ⏸ 的步骤表示必须等待用户实际回复后才能继续。不要在同一条消息中跨越此标记。
 
-1. 引导用户提供男频偏好（题材、风格、篇幅等）
-2. 读取 `male/guide.md`，按 规划 → 创作 → 评测 流程推进
-3. 使用 `shared/agents/` 下的框架 Agent 和评测 Agent
+### 男频创作流程
 
-### 女频创作
+**阶段一：规划**（如用户已有完整大纲则跳过，直接进入阶段二）
 
-1. 引导用户提供女频偏好（题材、感情线风格、角色模式等）
-2. 读取 `female/guide.md`，按 规划 → 创作 → 评测 流程推进
-3. 使用共享 Agent + 女频专项评测 Agent
+**第一轮 — 收集偏好**
+
+向用户一次性提出最多3个问题，收集以下偏好（用户输入中已明确的项可跳过）：
+1. 题材（玄幻/仙侠/都市/悬疑/科幻/游戏/历史/都市异能/穿越/恐怖/娱乐等）
+2. 风格基调（简洁明快/古典雅致/华丽绚烂/沉重严肃/轻松幽默/黑暗压抑等）
+3. 篇幅目标（短篇1-5万字/中篇5-20万字/长篇20-50万字/超长篇50万字以上）
+
+⏸ **等待用户回复后继续**
+
+**第二轮 — 加载主流程 + 构建框架**
+
+1. 使用 Read 工具加载 `male/guide.md`，按 规划 → 创作 → 评测 流程推进
+2. 根据当前规划焦点，使用 Read 工具加载对应的框架 Agent（一次加载1个，不要一次全部加载）：
+   - 确定世界设定时 → `shared/agents/framework/worldbuilder.md`
+   - 确定角色设定时 → `shared/agents/framework/charactercraft.md`
+   - 确定情节结构时 → `shared/agents/framework/plotarchitect.md`
+3. 根据题材，使用 Read 工具加载 `male/templates/genres/` 对应题材模板
+
+⏸ **等待用户确认框架后继续**
+
+**阶段二：逐章创作**
+
+1. 使用 Read 工具加载 `male/prompts/chapter_flow.md` 进行单章创作
+2. 根据章节内容焦点，使用 Read 工具加载对应的写作技法模块：
+   - 情感渲染场景 → `shared/templates/writing_craft/emotional_craft.md`
+   - 对白密集场景 → `shared/templates/writing_craft/dialogue_craft.md`
+   - 场景转换/氛围营造 → `shared/templates/writing_craft/scene_craft.md`
+   - 叙事视角技巧 → `shared/templates/writing_craft/narrative_pov.md`
+   - 世界观展示 → `shared/templates/writing_craft/world_craft.md`
+   - 节奏/深度平衡 → `shared/templates/writing_craft/depth_balance.md`
+
+**阶段三：评测**
+
+1. 使用 Read 工具加载 `male/prompts/review_flow.md` 进行质量评测
+2. 根据评测维度，使用 Read 工具加载 `shared/agents/review/` 中的对应评测 Agent
+
+---
+
+### 女频创作流程
+
+**阶段一：规划**（如用户已有完整大纲则跳过，直接进入阶段二）
+
+**第一轮 — 收集偏好**
+
+向用户一次性提出最多3个问题，收集以下偏好（用户输入中已明确的项可跳过）：
+1. 题材（现代言情/古代言情/耽美/百合/女尊/快穿/悬疑恋爱等）
+2. 感情线风格（甜宠主/虐恋主/推拉型等）
+3. 角色模式（双主角关系风格：平等型/互补型/主从型）
+
+⏸ **等待用户回复后继续**
+
+**第二轮 — 加载主流程 + 构建框架**
+
+1. 使用 Read 工具加载 `female/guide.md`，按 规划 → 创作 → 评测 流程推进
+2. 根据当前规划焦点，使用 Read 工具加载对应的框架 Agent（一次加载1个，不要一次全部加载）：
+   - 确定世界设定时 → `shared/agents/framework/worldbuilder.md`
+   - 确定角色设定时 → `shared/agents/framework/charactercraft.md`
+   - 确定情节结构时 → `shared/agents/framework/plotarchitect.md`
+3. 使用 Read 工具加载 `female/templates/genres/` 对应题材模板
+
+⏸ **等待用户确认框架后继续**
+
+**阶段二：逐章创作**
+
+1. 使用 Read 工具加载 `female/prompts/female_chapter_flow.md` 进行单章创作
+2. 根据章节内容焦点，使用 Read 工具加载对应的写作技法模块：
+   - 情感渲染场景 → `shared/templates/writing_craft/emotional_craft.md`
+   - 对白密集场景 → `shared/templates/writing_craft/dialogue_craft.md`
+   - 场景转换/氛围营造 → `shared/templates/writing_craft/scene_craft.md`
+   - 叙事视角技巧 → `shared/templates/writing_craft/narrative_pov.md`
+   - 世界观展示 → `shared/templates/writing_craft/world_craft.md`
+   - 节奏/深度平衡 → `shared/templates/writing_craft/depth_balance.md`
+
+**阶段三：评测**
+
+1. 使用 Read 工具加载 `female/prompts/review_flow.md` 进行质量评测
+2. 使用 Read 工具加载女频专项评测 Agent（`female/agents/review/`）
 
 ---
 
@@ -222,6 +281,4 @@ Novel-Skills/
 
 ---
 
-**选择你的创作方向，开始写作吧！**
-
-> **使用说明：** 以上文件树为系统完整结构索引，各模板和 Agent 文件在创作过程中按需加载。请勿在未读取的情况下猜测文件内容。如果用户需求超出支持的网文类型（如纯文学、非虚构等），提示本系统专注于商业网文创作，建议用户调整方向。
+> **使用说明：** 以上文件为系统结构索引。各文件的加载时机见上方「快速开始」中的阶段说明。请使用 Read 工具实际读取对应文件内容，请勿在未读取的情况下猜测文件内容。如果文件读取失败（文件不存在或无法访问），请告知用户缺失的组件并停止操作，不要伪造或猜测该文件的具体内容。
