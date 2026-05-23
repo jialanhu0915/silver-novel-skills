@@ -5,9 +5,9 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 # Sliver-novel-skills - AI 小说写作 Skill
 
-## 选择你的创作方向
+## 选择创作方向
 
-欢迎使用 Sliver-novel-skills AI 小说写作系统！请选择你想要创作的**小说类型**：
+引导用户选择创作方向。如果用户未明确方向，先询问用户偏好再继续。根据用户选择加载对应子技能。
 
 ---
 
@@ -21,10 +21,8 @@ description: Use when user wants to create AI-assisted web novels, including mal
 - 金手指辅助成长
 - 多维度评测保障质量
 
-**进入男频系统：**
-```
-male/SKILL.md
-```
+**加载男频技能：**
+用户确认选择男频后，读取 `male/guide.md` 获取男频完整创作流程，按流程推进。
 
 ---
 
@@ -38,10 +36,8 @@ male/SKILL.md
 - 双主角/群像支持
 - 叙事平衡（根据类型调整）
 
-**进入女频系统：**
-```
-female/SKILL.md
-```
+**加载女频技能：**
+用户确认选择女频后，读取 `female/guide.md` 获取女频完整创作流程，按流程推进。
 
 ---
 
@@ -92,7 +88,7 @@ shared/
 Novel-Skills/
 ├── SKILL.md              # 主入口（你在这里）
 ├── male/                 # 男频系统
-│   ├── SKILL.md          # 男频创作入口
+│   ├── guide.md          # 男频创作入口
 │   ├── agents/review/    # 男频专项评测Agents（预留）
 │   ├── templates/        # 男频专项模板
 │   │   ├── protagonist_design.md          # 男频主角设计模板
@@ -119,7 +115,7 @@ Novel-Skills/
 │       └── review_flow.md                 # 质量评测流程
 │
 ├── female/                # 女频系统
-│   ├── SKILL.md          # 女频创作入口
+│   ├── guide.md          # 女频创作入口
 │   ├── agents/review/    # 女频专项评测Agents
 │   │   ├── male_roles_judge.md           # 【Critical】男性角色独立性评测
 │   │   ├── romance_line_judge.md          # 感情线质量评测
@@ -183,19 +179,15 @@ Novel-Skills/
 
 ### 男频创作
 
-```
-进入 male/ 目录
-阅读 male/SKILL.md
-开始创作
-```
+1. 引导用户提供男频偏好（题材、风格、篇幅等）
+2. 读取 `male/guide.md`，按 规划 → 创作 → 评测 流程推进
+3. 使用 `shared/agents/` 下的框架 Agent 和评测 Agent
 
 ### 女频创作
 
-```
-进入 female/ 目录
-阅读 female/SKILL.md
-开始创作
-```
+1. 引导用户提供女频偏好（题材、感情线风格、角色模式等）
+2. 读取 `female/guide.md`，按 规划 → 创作 → 评测 流程推进
+3. 使用共享 Agent + 女频专项评测 Agent
 
 ---
 
@@ -206,7 +198,7 @@ Novel-Skills/
 | 类型 | 玄幻/仙侠/都市/悬疑 | 言情/耽美/百合/女尊/快穿 |
 | 核心驱动 | 升级打脸 | 感情线推进 |
 | 评测重点 | 反派智慧/金手指 | 男性角色独立性 |
-| 评测Agents | 9个通用 | 9通用 + 4专项 |
+| 评测Agents | 13个通用 | 13通用 + 4专项 |
 
 ---
 
@@ -218,6 +210,7 @@ Novel-Skills/
 | ConflictChecker | 冲突质量 |
 | DescriptionQualityAgent | 描写质量 |
 | CharacterJudge | 人物塑造 |
+| FemaleCharacterJudge | 女性角色塑造 |
 | PaceCritic | 节奏把控 |
 | ForeshadowHunter | 伏笔呼应 |
 | InfoAuditor | 信息交代 |
@@ -230,3 +223,5 @@ Novel-Skills/
 ---
 
 **选择你的创作方向，开始写作吧！**
+
+> **使用说明：** 以上文件树为系统完整结构索引，各模板和 Agent 文件在创作过程中按需加载。请勿在未读取的情况下猜测文件内容。如果用户需求超出支持的网文类型（如纯文学、非虚构等），提示本系统专注于商业网文创作，建议用户调整方向。
