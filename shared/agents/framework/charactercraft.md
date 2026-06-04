@@ -62,22 +62,6 @@
 - 过往创伤：影响性格和决策
 ```
 
-### 数据库写入
-
-```sql
-INSERT INTO characters (
-    novel_id, name, role_type,
-    personality_flaw, core_value, inner_fear, arc_change,
-    background, motivation, abilities, relationships,
-    has_own_goal, has_growth_arc
-) VALUES (
-    ?, '主角名', 'protagonist',
-    '性格缺陷', '价值观底线', '内心恐惧', '成长弧光描述',
-    '背景描述', '目标描述', '能力描述', '关系描述',
-    1, 1
-);
-```
-
 ---
 
 ## 模块二：女性角色设计
@@ -132,24 +116,6 @@ INSERT INTO characters (
 - 有自己的困境需要自己解决
 - 她的选择会影响剧情走向
 - 与男主是平等关系（不是附庸）
-```
-
-### 数据库写入
-
-```sql
-INSERT INTO characters (
-    novel_id, name, role_type, gender_design_type,
-    has_own_goal, has_growth_arc,
-    personality, background, motivation,
-    arc_change, relationships,
-    relationship_with_mc
-) VALUES (
-    ?, '女角色名', 'female_lead', '野心型/独立型/复杂型/成长型',
-    1, 1,
-    '性格描述', '背景描述', '目标描述',
-    '成长描述', '关系描述',
-    'equals'  -- 与主角平等关系
-);
 ```
 
 ---
@@ -227,22 +193,6 @@ INSERT INTO characters (
 - 或失败，但失败要有意义
 ```
 
-### 数据库写入
-
-```sql
-INSERT INTO characters (
-    novel_id, name, role_type, antagonist_type,
-    antagonist_intelligence_level, antagonist_arrogance_source,
-    has_own_goal, has_growth_arc,
-    background, motivation, abilities
-) VALUES (
-    ?, '反派名', 'antagonist', '智慧型/傲慢型/阴险型/立场型',
-    '高/中/低', '实力/出身/见识/其他',
-    1, 1,
-    '背景描述', '动机描述', '能力描述'
-);
-```
-
 ---
 
 ## 模块四：配角设计
@@ -286,22 +236,6 @@ INSERT INTO characters (
 - 配角与主角是合作而非服从
 ```
 
-### 数据库写入
-
-```sql
-INSERT INTO characters (
-    novel_id, name, role_type,
-    has_own_goal, has_growth_arc,
-    background, motivation, relationships,
-    relationship_with_mc
-) VALUES (
-    ?, '配角名', 'supporting',
-    1, 1,
-    '背景描述', '目标描述', '关系描述',
-    'equals/subordinate'  -- 平等/从属
-);
-```
-
 ---
 
 ## 模块五：角色关系网络
@@ -341,21 +275,6 @@ INSERT INTO characters (
 - 配角有自己的判断
 - 可以选择帮助或拒绝
 - 关系是双向的
-```
-
-### 数据库写入
-
-```sql
--- 角色关系记录
-INSERT INTO character_relationships (
-    novel_id, character_id_1, character_id_2,
-    relationship_type, initial_state, current_state,
-    development_trend, key_event_ids, is_hidden
-) VALUES (
-    ?, ?, ?,
-    '关系类型', '初始状态', '当前状态',
-    'up/down/wave/stable', '事件ID', 0/1
-);
 ```
 
 ### 冲突设计

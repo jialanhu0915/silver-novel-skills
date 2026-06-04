@@ -342,40 +342,6 @@
 
 ## 数据库记录格式
 
-```sql
--- 女频金手指记录
-INSERT INTO novel_frameworks (
-    novel_id,
-    gold_finger_type,        -- 类型：social_insight/emotional_perception/
-                              --       information_advantage/resource_integration/
-                              --       professional_expertise
-    gold_finger_name,        -- 金手指名称
-    gold_finger_effect,      -- 核心效果
-    gold_finger_cost,        -- 代价描述
-    gold_finger_limitation,  -- 限制描述
-    growth_stage,             -- 成长阶段
-    design_principle,         -- 符合的设计原则
-    created_at
-) VALUES (
-    $novel_id,
-    'social_insight',
-    '微表情感知',
-    '能感知对方情绪波动和大致意图',
-    '使用后需要独处恢复',
-    '只能感知强烈情绪；无法读取具体想法',
-    '初期→中期→后期',
-    '辅助而非替代；代价与限制',
-    NOW()
-);
-
--- 类型枚举说明
--- social_insight: 人际洞察型
--- emotional_perception: 情感感知型
--- information_advantage: 信息差型
--- resource_integration: 资源整合型
--- professional_expertise: 专业能力型
-```
-
 ---
 
 ## 总结

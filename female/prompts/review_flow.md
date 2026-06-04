@@ -248,26 +248,6 @@
 将评测结果记录到数据库：
 ```
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES
-  (?, 'logic', ?, ?, ?),
-  (?, 'conflict', ?, ?, ?),
-  (?, 'description_quality', ?, ?, ?),
-  (?, 'personality', ?, ?, ?),
-  (?, 'male_character', ?, ?, ?),
-  (?, 'female_character', ?, ?, ?),
-  (?, 'romance_line', ?, ?, ?),
-  (?, 'pacing', ?, ?, ?),
-  (?, 'foreshadowing', ?, ?, ?),
-  (?, 'information', ?, ?, ?),
-  (?, 'goldfinger', ?, ?, ?),
-  (?, 'climax', ?, ?, ?),
-  (?, 'pov', ?, ?, ?),
-  (?, 'supporting', ?, ?, ?),
-  (?, 'plot_structure', ?, ?, ?);
-```
-
 ## 人类审批
 
 ```

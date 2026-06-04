@@ -272,22 +272,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 境界体系
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'power_system', 'level', '境界名称', '境界描述');
-
--- 势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '正道/魔道/世家/王朝', '宗旨', '资源', '范围');
-
--- 体质
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'special_constitution', '体质', '体质名称', '体质效果描述');
-```
-
 ---
 
 ## 设计检查清单

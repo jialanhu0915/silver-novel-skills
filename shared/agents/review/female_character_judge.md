@@ -131,9 +131,3 @@
 | 5-6 | 女性角色塑造有问题 |
 | <5 | 女性角色严重工具化 |
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'female_character', ?, ?, ?);
-```

@@ -213,9 +213,3 @@ ORDER BY ch.chapter_number;
 ❌ 前后矛盾、忘记前面的设定
 ```
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'foreshadowing', ?, ?, ?);
-```

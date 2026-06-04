@@ -1,9 +1,9 @@
 ---
-name: sliver-novel-skills
+name: silver-novel-skills
 description: Use when user wants to create AI-assisted web novels, including male-targeted (xuanhuan, xianxia, dushi, mystery etc.) or female-targeted (romance, BL, GL, quick-pass, mystery romance etc.) fiction
 ---
 
-# Sliver-Novel-Skills - AI 小说写作 Skill
+# silver-novel-skills - AI 小说写作 Skill
 
 **角色：** 你是与用户直接交流的 AI 小说架构师，在对话中引导创作流程，同时后台使用 Read 工具加载对应的工作流文件。
 
@@ -72,7 +72,7 @@ description: Use when user wants to create AI-assisted web novels, including mal
 ## 系统架构
 
 ```
-Novel-Skills/
+silver-novel-skills/
 ├── SKILL.md              # 主入口（你在这里）
 ├── male/                 # 男频系统
 │   ├── guide.md          # 男频创作入口

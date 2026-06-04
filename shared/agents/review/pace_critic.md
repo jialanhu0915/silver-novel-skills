@@ -191,13 +191,6 @@ WHERE novel_id = ? AND chapter_number BETWEEN ? AND ?
 ORDER BY chapter_number;
 ```
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'pacing', ?, ?, ?);
-```
-
 ## 设计原则速查
 
 ```

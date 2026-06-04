@@ -160,15 +160,3 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 女性角色设计记录
-INSERT INTO characters (novel_id, name, role_type, gender_design_type, has_own_goal, has_growth_arc, relationship_with_mc)
-VALUES (?, ?, 'female_lead', ?, ?, ?, ?);
-
--- gender_design_type: ambitious/independent/complex/growing
--- has_own_goal: 1/0
--- has_growth_arc: 1/0
--- relationship_with_mc: equals/mc_dominant/subordinate
-```

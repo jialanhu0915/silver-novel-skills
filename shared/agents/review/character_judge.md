@@ -141,9 +141,3 @@ ORDER BY ch.chapter_number, ce.event_order;
 3. 反派智商明显低于设定应有的水平
 4. 反派对强者（如长老、更高境界者）同样无脑嘲讽
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'personality', ?, ?, ?);
-```

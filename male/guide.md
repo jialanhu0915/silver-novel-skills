@@ -1,9 +1,9 @@
----
-name: novelist-male
-description: Use when user wants to write male-targeted web novels (xuanhuan, xianxia, dushi, mystery) with AI assistance, upgrade-fighting plots, and multi-agent review system
----
+# 男频小说创作指南
 
-# Novelist - AI 男频小说写作 Skill
+本指南是 `silver-novel-skills` Skill 的男频子流程，由根 `SKILL.md` 路由后通过 Read 工具加载。
+不要直接作为独立 Skill 使用（无 frontmatter，不会被 Claude Code 自动发现）。
+
+---
 
 全类型 AI 独立创作男频小说，支持先整体规划后逐章节完成，通过 SQLite 数据库追踪所有设定确保跨章节一致性。
 
@@ -114,105 +114,7 @@ description: Use when user wants to write male-targeted web novels (xuanhuan, xi
     人类审批反馈 → 记录到数据库
 ```
 
----
-
-## 文件结构
-
-```
-male/
-├── SKILL.md                    # 主技能文件
-├── templates/                  # 男频专项模板
-│   ├── protagonist_design.md         # 主角设计
-│   ├── antagonist_design.md         # 反派设计
-│   ├── goldfinger_design.md         # 金手指设计
-│   ├── climax_design.md             # 高潮设计
-│   ├── antagonist_face_slapping.md  # 打脸设计
-│   ├── female_characters.md          # 女性角色设计
-│   └── genres/
-│       ├── xuanhuan.md              # 玄幻
-│       ├── xianxia.md               # 仙侠
-│       ├── dushi.md                 # 都市
-│       └── mystery.md               # 悬疑
-└── prompts/
-    ├── planning_flow.md             # 规划流程
-    ├── chapter_flow.md              # 章节流程
-    └── review_flow.md               # 评测流程
-
-# 以下为男频与女频共享的资源
-shared/
-├── agents/
-│   ├── framework/              # 框架构建Agents
-│   │   ├── worldbuilder.md
-│   │   ├── charactercraft.md
-│   │   └── plotarchitect.md
-│   └── review/                # 通用评测Agents
-│       ├── logic_checker.md
-│       ├── character_judge.md
-│       ├── female_character_judge.md
-│       ├── pace_critic.md
-│       ├── foreshadow_hunter.md
-│       ├── info_auditor.md
-│       ├── goldfinger_checker.md
-│       ├── climax_checker.md
-│       ├── supporting_checker.md
-│       ├── description_quality_agent.md  # 描写质量评测
-│       ├── plot_structure_agent.md       # 剧情结构评测
-│       ├── conflict_checker.md          # 冲突质量评测
-│       └── pov_checker.md               # 叙事视角评测
-├── templates/
-│   ├── character_relationship_network.md
-│   ├── supporting_characters.md
-│   └── writing_craft/              # 写作技法模块
-│       ├── emotional_craft.md
-│       ├── dialogue_craft.md
-│       ├── scene_craft.md
-│       ├── depth_balance.md
-│       ├── narrative_pov.md
-│       └── world_craft.md
-└── database/
-    └── schema.sql
-```
-
----
-
-## 十三维评测体系
-
-| 评测Agent | 评测维度 | 说明 |
-|-----------|----------|------|
-| LogicChecker | 逻辑一致性 | 时间线/规则/因果/常识 |
-| ConflictChecker | 冲突质量 | 冲突分类/层次递进/代价感 |
-| DescriptionQualityAgent | 描写质量 | 对话比例/动作/心理/微表情/环境 |
-| CharacterJudge | 人物塑造 | 行为/台词/情感/关系 |
-| FemaleCharacterJudge | 女性角色 | 独立目标/成长/选择/底线 |
-| PaceCritic | 节奏把控 | 起伏/密度/开篇/结尾 |
-| ForeshadowHunter | 伏笔呼应 | 伏笔回收/埋设/呼应 |
-| InfoAuditor | 信息交代 | 清晰/冗余/缺失/展示 |
-| GoldfingerChecker | 金手指使用 | 正确使用/代价/失败/依赖 |
-| ClimaxChecker | 爽点设计 | 铺垫/代价/密度/类型 |
-| PovChecker | 叙事视角 | POV类型/一致性/摄像头主角 |
-| SupportingChecker | 配角价值 | 独立目标/困境/工具人/平等 |
-| PlotStructureAgent | 剧情结构 | 场景多样性/标题规范/衔接连贯 |
-
----
-
-## 数据库表
-
-| 表名 | 用途 | 新增字段 |
-|------|------|----------|
-| novels | 小说项目元数据 | - |
-| frameworks | 世界观、情节、金手指设计 | gold_finger_type/cost/limitation |
-| characters | 角色详情 | gender_design_type/personality_flaw/antagonist_type/has_own_goal等 |
-| character_events | 角色事件 | - |
-| character_relationships | 角色关系网络 | relationship_type/development_trend/is_hidden |
-| relationship_events | 角色关系变化事件 | event_type/old_state/new_state |
-| factions | 势力/组织 | - |
-| faction_events | 势力事件 | - |
-| items | 物品/道具 | - |
-| item_events | 物品事件 | - |
-| chapters | 章节内容 | antagonist_quality/female_character_quality/protagonist_depth_quality等 |
-| feedbacks | 人类审批反馈 | 新增反馈类型 |
-| materials | 可复用素材库 | - |
-| self_reflections | 自我反思记录 | 新增reflection_type |
+> 完整的项目文件结构、十三维评测体系、数据库表结构等通用信息见根 `SKILL.md` 的「系统架构」「通用评测」章节。
 
 ---
 

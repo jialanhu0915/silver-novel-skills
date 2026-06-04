@@ -286,22 +286,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 娱乐公司势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '公司名称', '经纪公司/制作公司/平台', '经营理念', '艺人/资本/资源', '市场份额');
-
--- 角色（涉及娱乐身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '艺人/经纪人/幕后', '专业能力/特长', '出道经历/代表作品/咖位');
-
--- 作品设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, '作品', '音乐/影视/综艺', '作品名称', '作品描述/成绩/反响');
-```
-
 ---
 
 ## 设计检查清单

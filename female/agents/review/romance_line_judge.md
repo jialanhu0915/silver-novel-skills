@@ -141,11 +141,6 @@
 
 完成评测后，生成以下SQL记录：
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'romance_line', ?, ?, ?);
-```
-
 ## 使用说明
 
 1. 始终将感情线作为女频小说的主故事线来评测

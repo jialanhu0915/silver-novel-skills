@@ -190,9 +190,3 @@
 | 5-6 | 爽点设计有问题 |
 | <5 | 爽点过于功利/连续无张力 |
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'climax', ?, ?, ?);
-```

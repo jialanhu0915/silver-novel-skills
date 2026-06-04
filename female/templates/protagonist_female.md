@@ -459,42 +459,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 女主设计记录
-INSERT INTO characters (
-    novel_id, 
-    name, 
-    role_type, 
-    personality_type, 
-    emotional_independence, 
-    has_own_judgment, 
-    growth_arc_type, 
-    primary_focus
-)
-VALUES (
-    ?, 
-    ?, 
-    'protagonist', 
-    ?, 
-    ?, 
-    ?, 
-    ?, 
-    'emotional_breakthrough'
-);
-
--- 字段说明：
--- personality_type: ambitious / independent / growing / complex
--- emotional_independence: 1=有情感独立 / 0=情感依赖
--- has_own_judgment: 1=有自己的判断力 / 0=人云亦云
--- growth_arc_type: emotional / cognitive / self_aware / compound
-
--- 示例记录
-INSERT INTO characters (novel_id, name, role_type, personality_type, emotional_independence, has_own_judgment, growth_arc_type, primary_focus)
-VALUES (1, '林知意', 'protagonist', 'independent', 1, 1, 'emotional', 'emotional_breakthrough');
-```
-
 ---
 
 ## 女主检查清单

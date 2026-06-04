@@ -83,9 +83,3 @@
 | 5-6 | 金手指使用有问题 |
 | <5 | 金手指完全替代主角成长 |
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'goldfinger', ?, ?, ?);
-```

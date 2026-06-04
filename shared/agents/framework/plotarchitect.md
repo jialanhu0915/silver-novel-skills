@@ -280,18 +280,6 @@
 问题：不确定能否成功，有紧张感
 ```
 
-### 数据库写入
-
-```sql
-INSERT INTO frameworks (
-    novel_id, type, category, name, content,
-    gold_finger_type, gold_finger_cost, gold_finger_limitation
-) VALUES (
-    ?, 'goldfinger', 'main', '金手指名称', '详细描述',
-    'information/knowledge/resource/direct', '代价描述', '限制描述'
-);
-```
-
 ---
 
 ## 模块四：伏笔体系设计

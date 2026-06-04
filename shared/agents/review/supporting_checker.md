@@ -98,9 +98,3 @@
 | 5-6 | 配角设计有问题，部分沦为工具 |
 | <5 | 配角完全沦为工具人 |
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'supporting', ?, ?, ?);
-```

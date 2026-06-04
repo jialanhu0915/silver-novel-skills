@@ -1,4 +1,4 @@
-# Sliver-Novel-Skills
+# silver-novel-skills
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -62,24 +62,28 @@ AI-powered novel writing system with full support for male-oriented and female-o
 ### Directory Structure
 
 ```
-Novel-Skills/
+silver-novel-skills/
 ├── SKILL.md              # Main entry
 ├── male/                 # Male-oriented system
-│   ├── SKILL.md
-│   ├── agents/
+│   ├── guide.md          # Male-oriented entry
 │   ├── templates/
 │   └── prompts/
 ├── female/              # Female-oriented system
-│   ├── SKILL.md
+│   ├── guide.md          # Female-oriented entry
 │   ├── agents/
+│   │   └── review/       # Female-specific evaluators
 │   ├── templates/
 │   └── prompts/
 └── shared/              # Shared resources
     ├── agents/
     │   ├── framework/   # Framework agents
-    │   └── review/      # Evaluation agents
-    ├── templates/       # Template library
-    └── database/        # Data structures
+    │   └── review/      # Universal evaluators
+    ├── templates/
+    │   ├── character_relationship_network.md
+    │   ├── supporting_characters.md
+    │   └── writing_craft/   # 6 writing craft modules
+    └── database/
+        └── schema.sql
 ```
 
 ### Basic Usage
@@ -87,19 +91,17 @@ Novel-Skills/
 **Male-Oriented Writing**
 
 ```
-1. Navigate to the male/ directory
-2. Read male/SKILL.md
-3. Use Framework Agents to build your novel structure
-4. Use Review Agents for quality evaluation
+1. Read male/guide.md
+2. Use Framework Agents to build your novel structure
+3. Use Review Agents for quality evaluation
 ```
 
 **Female-Oriented Writing**
 
 ```
-1. Navigate to the female/ directory
-2. Read female/SKILL.md
-3. Use Framework Agents to build your novel structure
-4. Use universal + specialized female-oriented agents for evaluation
+1. Read female/guide.md
+2. Use Framework Agents to build your novel structure
+3. Use universal + specialized female-oriented agents for evaluation
 ```
 
 ---
@@ -107,29 +109,53 @@ Novel-Skills/
 ## Architecture
 
 ```
-Novel-Skills
+silver-novel-skills
 │
 ├── male/                           # Male-oriented system
-│   ├── agents/review/              # Male-specific evaluators
+│   ├── guide.md                    # Male-oriented entry
 │   ├── templates/                  # Male-specific templates
 │   │   ├── protagonist_design.md
 │   │   ├── antagonist_design.md
 │   │   ├── goldfinger_design.md
 │   │   ├── climax_design.md
-│   │   └── genres/                # Genre-specific
+│   │   ├── antagonist_face_slapping.md
+│   │   ├── female_characters.md
+│   │   └── genres/                # Genre-specific (11 genres)
 │   │       ├── xuanhuan.md
 │   │       ├── xianxia.md
 │   │       ├── dushi.md
-│   │       └── mystery.md
+│   │       ├── mystery.md
+│   │       ├── scifi.md
+│   │       ├── gaming.md
+│   │       ├── historical.md
+│   │       ├── urban_fantasy.md
+│   │       ├── transmigration.md
+│   │       ├── horror.md
+│   │       └── entertainment.md
 │   └── prompts/                    # Writing flow prompts
 │
 ├── female/                         # Female-oriented system
+│   ├── guide.md                    # Female-oriented entry
 │   ├── agents/review/              # Female-specific evaluators
 │   │   ├── male_roles_judge.md    # 【Critical】Male character independence
 │   │   ├── romance_line_judge.md  # Romance quality
 │   │   ├── bl_relationship_judge.md
 │   │   └── gl_relationship_judge.md
-│   ├── templates/                 # Female-specific templates
+│   ├── templates/                 # Female-specific templates (5 base + 8 genres)
+│   │   ├── protagonist_female.md
+│   │   ├── dual_protagonist.md
+│   │   ├── romance_line.md
+│   │   ├── female_goldfinger_design.md
+│   │   ├── antagonist_face_slapping_female.md
+│   │   └── genres/
+│   │       ├── romance_modern.md
+│   │       ├── ancient_romance.md
+│   │       ├── female_xianxia.md
+│   │       ├── boys_love.md
+│   │       ├── girls_love.md
+│   │       ├── female_dominance.md
+│   │       ├── quick_pass.md
+│   │       └── mystery_romance.md
 │   └── prompts/
 │
 └── shared/                         # Shared resources
@@ -138,19 +164,30 @@ Novel-Skills
     │   │   ├── worldbuilder.md
     │   │   ├── charactercraft.md
     │   │   └── plotarchitect.md
-    │   └── review/                # Universal evaluators
+    │   └── review/                # Universal evaluators (13 agents)
     │       ├── logic_checker.md
+    │       ├── conflict_checker.md
+    │       ├── description_quality_agent.md
+    │       ├── character_judge.md
+    │       ├── female_character_judge.md
     │       ├── pace_critic.md
     │       ├── foreshadow_hunter.md
     │       ├── info_auditor.md
     │       ├── goldfinger_checker.md
     │       ├── climax_checker.md
+    │       ├── pov_checker.md
     │       ├── supporting_checker.md
-    │       ├── character_judge.md
-    │       └── female_character_judge.md
+    │       └── plot_structure_agent.md
     └── templates/
         ├── character_relationship_network.md
-        └── supporting_characters.md
+        ├── supporting_characters.md
+        └── writing_craft/   # 6 writing craft modules
+            ├── emotional_craft.md
+            ├── dialogue_craft.md
+            ├── scene_craft.md
+            ├── depth_balance.md
+            ├── narrative_pov.md
+            └── world_craft.md
 ```
 
 ---

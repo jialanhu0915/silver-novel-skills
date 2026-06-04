@@ -328,19 +328,7 @@
 
 ---
 
-## 数据库记录
-
-这些字段已在 database/schema.sql 中定义：
-
-```sql
--- frameworks.gold_finger_type: information/knowledge/resource/direct
--- frameworks.gold_finger_cost: 代价描述
--- frameworks.gold_finger_limitation: 限制描述
-```
-
-**使用说明：**
-- 记录金手指类型和代价
-- 评测时检查是否符合设计原则
+> 金手指字段定义在 `shared/database/schema.sql` 的 `frameworks` 表中（`gold_finger_type` / `gold_finger_cost` / `gold_finger_limitation`）。
 
 ---
 

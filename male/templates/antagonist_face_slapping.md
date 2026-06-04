@@ -354,18 +354,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 打脸场景设计记录
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'climax_scene', 'face_slapping', '场景名称', '场景描述');
-
--- 打脸效果记录
-UPDATE chapters SET climax_quality = 'excellent/good/average/poor'
-WHERE id = ?;
-```
-
 ---
 
 ## 设计检查清单

@@ -182,15 +182,3 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 反派角色设计记录
-INSERT INTO characters (novel_id, name, role_type, antagonist_type, intelligence_level, arrogance_source, manipulation_style)
-VALUES (?, ?, 'antagonist', ?, ?, ?, ?);
-
--- antagontype: 智慧型/傲慢型/阴险型/立场型
--- intelligence_level: 高/中/低
--- arrogance_source: 实力/出身/见识/其他
--- manipulation_style: 直接/间接/借刀/规则
-```

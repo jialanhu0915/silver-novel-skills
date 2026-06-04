@@ -293,11 +293,6 @@ Chapter X: 关键事件
 
 ## 七、SQL记录格式
 
-```sql
-INSERT INTO chapters (novel_id, title, chapter_number, word_count, protagonist_type, relationship_stage, sweet_level, conflict_level)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-```
-
 ### 字段说明
 
 | 字段 | 类型 | 说明 |

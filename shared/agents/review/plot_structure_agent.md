@@ -219,7 +219,3 @@ SELECT * FROM romance_lines WHERE novel_id = ?;
 
 ## SQL输出
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'plot_structure', ?, ?, ?);
-```

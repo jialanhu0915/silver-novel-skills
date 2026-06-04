@@ -340,26 +340,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 境界体系
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'cultivation_realm', 'level', '境界名称', '描述');
-
--- 势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources)
-VALUES (?, '势力名称', '仙门/魔道/妖族/散修', '宗旨', '资源');
-
--- 功法
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'technique', 'type', '功法名称', '功法描述');
-
--- 神通
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'divine_power', 'type', '神通名称', '神通描述');
-```
-
 ---
 
 ## 设计检查清单

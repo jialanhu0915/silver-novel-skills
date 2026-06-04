@@ -242,30 +242,3 @@ BL文与穿越/仙侠/无限流等题材深度融合已成主流。
 
 ## SQL记录格式
 
-```sql
-INSERT INTO genre_templates (
-    genre_id,
-    genre_name,
-    genre_name_cn,
-    category,
-    target_audience,
-    core_elements,
-    sub_types,
-    relationship_stages,
-    special_considerations,
-    checklist,
-    created_at
-) VALUES (
-    'BL',
-    'Boys Love',
-    '耽美/BL',
-    'female',
-    'Female readers who enjoy male-male romance',
-    'Dual male protagonists; romantic tension; emotional depth; complete male characters',
-    '{"modern_sweet":"现代甜宠 - Contemporary urban, light romantic HE", "ancient_wuxia":"古代武侠 - Martial arts world, cultivation sects", "campus":"校园纯爱 - High school/university, pure first love", "bitter_love":"虐恋情深 - Angsty conflict, possible tragedy", "fantasy_adventure":"玄幻冒险 - Other worlds, supernatural abilities"}',
-    '{"stage1_meeting":"First encounter, strong impression", "stage2_acquaintance":"Getting to know, initial attraction", "stage3_ambiguity":"Push-pull, jealousy, near-misses", "stage4_confirmation":"Feelings acknowledged, beginning intimacy", "stage5_adjustment":"Challenges, value differences", "stage6_transcendence":"Deep bond, crisis weathered"}',
-    'Intimacy: suggestive not explicit, emotion-focused; Social context: handle rejection/prejudice sensitively; Character voice: both masculine, avoid feminization; Third wheels: well-characterized, not just comic relief',
-    'Both characters complete men; 攻受 balanced not stereotyped; Emotional connection primary; Intimacy appropriate; User style maintained; Progression earned',
-    NOW()
-);
-```

@@ -340,22 +340,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '豪门/企业/地下', '宗旨', '资源', '范围');
-
--- 角色（涉及都市身份）
-INSERT INTO characters (novel_id, name, role_type, background, relationships)
-VALUES (?, '角色名', '类型', '表面身份/真实身份', '关系描述');
-
--- 商业线
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'business', '主线/支线', '商业事件名称', '描述');
-```
-
 ---
 
 ## 设计检查清单

@@ -283,22 +283,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 都市异能势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '家族/门派/官方/联盟', '宗旨', '成员/资源/地盘', '控制范围');
-
--- 角色（涉及异能身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '修士/异能者/武者', '能力列表/等级', '表面身份/真实身份');
-
--- 异能设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'ability', '异能类型/修真体系', '体系名称', '能力描述/限制/代价');
-```
-
 ---
 
 ## 设计检查清单

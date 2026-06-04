@@ -170,11 +170,6 @@
 
 完成评测后，生成以下SQL：
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'gl_relationship', ?, ?, ?);
-```
-
 其中：
 - `chapter_id`：被评测章节的ID
 - `reflection_type`：对于此Agent始终为'gl_relationship'

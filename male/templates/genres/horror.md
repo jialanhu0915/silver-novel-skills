@@ -306,22 +306,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 灵异势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '正道/邪道/官方/民间', '宗旨', '成员/传承/法器', '势力范围');
-
--- 角色（涉及灵异身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '修士/鬼魂/普通人', '道术/异能', '茅山传承/灵异体质');
-
--- 恐怖副本设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, '副本', '副本设定/规则/奖励', '副本名称', '副本描述/逃生条件/灵异存在');
-```
-
 ---
 
 ## 设计检查清单

@@ -209,7 +209,3 @@ AI写作常见问题：章节中对话占比过高，动作描写、心理描写
 
 ## SQL输出
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'description_quality', ?, ?, ?);
-```

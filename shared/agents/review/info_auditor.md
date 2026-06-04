@@ -256,9 +256,3 @@ SELECT * FROM frameworks WHERE novel_id = ? AND type = 'power_system';
 - 信息太密集记不住
 ```
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'information', ?, ?, ?);
-```

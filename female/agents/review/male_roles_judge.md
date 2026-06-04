@@ -145,11 +145,6 @@
 
 ## SQL 输出格式
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'male_character', ?, ?, ?);
-```
-
 ### SQL 字段说明
 - `chapter_id`：章节ID
 - `reflection_type`：固定值 `'male_character'`

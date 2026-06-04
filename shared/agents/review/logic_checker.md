@@ -73,9 +73,3 @@ SELECT * FROM factions WHERE novel_id = ?;
 | 5-6 | 有明显逻辑问题 |
 | <5 | 存在严重逻辑错误 |
 
-## 输出到数据库
-
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'logic', ?, ?, ?);
-```

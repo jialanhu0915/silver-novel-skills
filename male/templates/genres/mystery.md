@@ -414,26 +414,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 核心谜题
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'mystery', 'core', '谜题名称', '谜题描述');
-
--- 嫌疑人
-INSERT INTO characters (novel_id, name, role_type, background, motivation, is_killer)
-VALUES (?, '嫌疑人名', 'suspect', '背景', '动机', '是否为真凶');
-
--- 线索
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'clue', 'type', '线索名称', '线索描述及后续揭示');
-
--- 证据链
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'evidence', 'chain', '证据链名称', '证据描述');
-```
-
 ---
 
 ## 设计检查清单

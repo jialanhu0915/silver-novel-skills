@@ -251,22 +251,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 星际势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '人类联邦/外星种族/星际企业', '宗旨', '舰队/技术/资源', '控制范围');
-
--- 文明设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'civilization', '文明等级/科技水平', '文明名称', '描述');
-
--- 角色（涉及星际身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '人类/外星/机械', '能力列表', '出身/基因等级/身份');
-```
-
 ---
 
 ## 设计检查清单

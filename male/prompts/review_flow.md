@@ -258,23 +258,7 @@ Minor（可以忽略）：
 ### 如果通过审核
 ```
 将评测结果记录到数据库：
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES
-  (?, 'logic', ?, ?, ?),
-  (?, 'conflict', ?, ?, ?),
-  (?, 'description_quality', ?, ?, ?),
-  (?, 'personality', ?, ?, ?),
-  (?, 'female_character', ?, ?, ?),
-  (?, 'pacing', ?, ?, ?),
-  (?, 'foreshadowing', ?, ?, ?),
-  (?, 'information', ?, ?, ?),
-  (?, 'goldfinger', ?, ?, ?),
-  (?, 'climax', ?, ?, ?),
-  (?, 'pov', ?, ?, ?),
-  (?, 'supporting', ?, ?, ?),
-  (?, 'plot_structure', ?, ?, ?);
-```
+
 ```
 
 ## 人类审批

@@ -252,18 +252,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 主角设计记录
-INSERT INTO characters (novel_id, name, role_type, personality_flaw, core_value, inner_fear, has_growth_arc)
-VALUES (?, 'protagonist', ?, ?, ?, ?, 1);
-
--- personality_flaw: impulsive/cold/suspicious/arrogant/avoidant
--- core_value: 描述主角的核心价值观
--- inner_fear: 描述主角内心恐惧
-```
-
 ## 主角检查清单
 
 - [ ] 主角有明确的性格缺陷

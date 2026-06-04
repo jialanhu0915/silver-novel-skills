@@ -286,22 +286,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 穿越世界设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'world', '世界设定/原著剧情', '世界名称', '世界规则/原著剧情/关键节点');
-
--- 系统设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'system', '系统类型/任务/商城', '系统名称', '系统规则/奖励机制/惩罚机制');
-
--- 角色（涉及穿书身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '穿越者/原著角色', '能力/攻略对象', '原著身份/真实身份');
-```
-
 ---
 
 ## 设计检查清单

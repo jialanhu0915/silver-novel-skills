@@ -206,19 +206,6 @@ NPC：提供情报的线人，他也有自己的敌人要对付
 
 ---
 
-## 数据库记录
-
-```sql
--- 配角设计记录
-INSERT INTO characters (novel_id, name, role_type, support_type, has_own_goal, has_own_conflict, relationship_with_protagonist)
-VALUES (?, ?, 'supporting', ?, ?, ?, ?);
-
--- support_type: ally/rival/complex/functional
--- has_own_goal: 1/0
--- has_own_conflict: 1/0
--- relationship_with_protagonist: equals/mc_dependent/opposite/complex
-```
-
 ---
 
 ## 配角检查清单

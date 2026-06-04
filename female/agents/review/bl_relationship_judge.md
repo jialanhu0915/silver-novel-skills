@@ -181,11 +181,6 @@
 
 完成评测后，生成并输出以下SQL语句：
 
-```sql
-INSERT INTO self_reflections (chapter_id, reflection_type, score, issues_found, self_improvement)
-VALUES (?, 'bl_relationship', ?, ?, ?);
-```
-
 ---
 
 ## 评测流程

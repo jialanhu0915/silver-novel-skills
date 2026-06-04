@@ -264,22 +264,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 战队设定
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '战队名称', '职业/公会', '战队理念', '队员/资金/赞助', '赛事级别');
-
--- 角色（涉及电竞身份）
-INSERT INTO characters (novel_id, name, role_type, abilities, background)
-VALUES (?, '角色名', '选手/主播/策划', '游戏位置/特长', '电竞经历/战绩');
-
--- 游戏设定
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'game', '职业/技能/装备', '游戏名称', '游戏机制描述');
-```
-
 ---
 
 ## 设计检查清单

@@ -279,22 +279,6 @@
 
 ---
 
-## 数据库记录
-
-```sql
--- 朝堂势力
-INSERT INTO factions (novel_id, name, faction_type, ideology, resources, territory)
-VALUES (?, '势力名称', '皇室/世家/门派/军队', '宗旨', '官员/军队/财富', '势力范围');
-
--- 角色（涉及历史身份）
-INSERT INTO characters (novel_id, name, role_type, background, abilities)
-VALUES (?, '角色名', '文官/武将/世家/江湖', '出身/官职/阵营', '智谋/武艺/特长');
-
--- 历史事件
-INSERT INTO frameworks (novel_id, type, category, name, content)
-VALUES (?, 'historical', '历史事件/战争/政治', '事件名称', '事件描述');
-```
-
 ---
 
 ## 设计检查清单

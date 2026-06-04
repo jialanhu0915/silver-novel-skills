@@ -190,30 +190,3 @@
 
 ## SQL记录格式
 
-```sql
-INSERT INTO genre_templates (
-    genre_code,
-    genre_name_cn,
-    genre_name_en,
-    target_audience,
-    core_elements,
-    sub_types,
-    key_considerations,
-    character_archetypes,
-    relationship_dynamics,
-    checklist,
-    created_at
-) VALUES (
-    'GL',
-    '百合',
-    'Girls Love',
-    'Female readers who enjoy female-female romance',
-    'Dual female protagonists, emotional depth, female gaze',
-    '["青春校园", "现代都市", "治愈温暖", "时尚模特"]',
-    '{"authentic_female_experience": true, "womens_relationships": true, "emotional_depth": true, "social_context": true}',
-    '{"active_type": "Takes initiative, clear goals", "growth_type": "Discovers attraction, hesitant initially"}',
-    '{"experience_imbalance": true, "personality_tension": true, "independent_lives": true}',
-    '["Both authentic", "Genuine relationship", "Female gaze maintained", "Independent goals", "Social context handled", "Emotional connection primary", "Style maintained"]',
-    CURRENT_TIMESTAMP
-);
-```
