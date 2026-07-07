@@ -32,3 +32,7 @@ description: Use when user wants to create AI-assisted web novels...
 ### 避免误用全局指令
 
 全局 `~/.claude/CLAUDE.md` 中的"提交"等规则与本项目可能冲突。本项目的提交规范以 `AGENTS.md` 为准。
+
+### 内容设计原则
+
+模板（templates）与评审（review agents）的**职责分离、示例数量约束**等原则见 [AGENTS.md](./AGENTS.md)「内容设计原则」章节。本文件不重复——但在创建或重构模板/评审文件时，必须先回顾该章节。
