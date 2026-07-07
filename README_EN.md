@@ -15,8 +15,8 @@ AI-powered novel writing system with full support for male-oriented and female-o
 
 | System | Target Audience | Supported Genres |
 |--------|-----------------|------------------|
-| Male-Oriented | Male readers | Xuanhuan, Xianxia, Urban, Mystery |
-| Female-Oriented | Female readers | Romance, Boys' Love, Girls' Love, Female Dominance, Quick Pass, Mystery Romance |
+| Male-Oriented | Male readers | Xuanhuan, Xianxia, Urban, Mystery, Sci-Fi, Gaming, Historical, Urban Fantasy, Transmigration, Horror, Cosmic Horror, Entertainment |
+| Female-Oriented | Female readers | Romance, Boys' Love, Girls' Love, Female Dominance, Quick Pass, Mystery Romance, Ancient Romance, Female Xianxia |
 
 ### Framework Agents
 
@@ -31,13 +31,18 @@ AI-powered novel writing system with full support for male-oriented and female-o
 | Agent | Evaluation Dimension |
 |-------|----------------------|
 | LogicChecker | Logical consistency |
+| ConflictChecker | Conflict quality |
+| DescriptionQualityAgent | Description quality |
 | CharacterJudge | Character development |
+| FemaleCharacterJudge | Female character development |
 | PaceCritic | Pacing control |
 | ForeshadowHunter | Foreshadowing & callbacks |
 | InfoAuditor | Information delivery |
 | GoldfingerChecker | Cheat item/golden finger usage |
 | ClimaxChecker | Climax design |
+| PovChecker | Narrative POV |
 | SupportingChecker | Supporting character value |
+| PlotStructureAgent | Plot structure |
 
 **Female-Oriented Specialized Evaluators**
 
@@ -47,6 +52,12 @@ AI-powered novel writing system with full support for male-oriented and female-o
 | RomanceLineJudge | Romance quality |
 | BLRelationshipJudge | Boys' Love specialization |
 | GLRelationshipJudge | Girls' Love specialization |
+
+**Male-Oriented Specialized Evaluators**
+
+| Agent | Evaluation Dimension |
+|-------|----------------------|
+| CosmicHorrorEvaluator | Cosmic horror specialization (sanity mechanism / unspeakable entities / thrill vs philosophy balance) |
 
 ### Core Design Principles
 
@@ -66,6 +77,8 @@ silver-novel-skills/
 ├── SKILL.md              # Main entry
 ├── male/                 # Male-oriented system
 │   ├── guide.md          # Male-oriented entry
+│   ├── agents/
+│   │   └── review/       # Male-specific evaluators
 │   ├── templates/
 │   └── prompts/
 ├── female/              # Female-oriented system
@@ -93,7 +106,7 @@ silver-novel-skills/
 ```
 1. Read male/guide.md
 2. Use Framework Agents to build your novel structure
-3. Use Review Agents for quality evaluation
+3. Use universal + male-specific Review Agents for quality evaluation
 ```
 
 **Female-Oriented Writing**
@@ -120,7 +133,7 @@ silver-novel-skills
 │   │   ├── climax_design.md
 │   │   ├── antagonist_face_slapping.md
 │   │   ├── female_characters.md
-│   │   └── genres/                # Genre-specific (11 genres)
+│   │   └── genres/                # Genre-specific (12 genres)
 │   │       ├── xuanhuan.md
 │   │       ├── xianxia.md
 │   │       ├── dushi.md
@@ -131,7 +144,8 @@ silver-novel-skills
 │   │       ├── urban_fantasy.md
 │   │       ├── transmigration.md
 │   │       ├── horror.md
-│   │       └── entertainment.md
+│   │       ├── entertainment.md
+│   │       └── cosmic_horror.md
 │   └── prompts/                    # Writing flow prompts
 │
 ├── female/                         # Female-oriented system
