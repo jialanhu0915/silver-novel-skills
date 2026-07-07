@@ -108,6 +108,7 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 1. 使用 Read 工具加载 `male/prompts/INDEX.md`，选择质量评测流程
 2. **评测 Agent**：使用 Read 工具加载 `shared/agents/review/INDEX.md`，根据章节问题选择 1 个或多个评测 Agent
+3. **男频专项评测 Agent**（按需）：使用 Read 工具加载 `male/agents/review/INDEX.md`，叠加通用评测使用
 
 ---
 
@@ -153,7 +154,7 @@ description: Use when user wants to create AI-assisted web novels, including mal
 | 类型 | 玄幻/仙侠/都市/悬疑 | 言情/耽美/百合/女尊/快穿 |
 | 核心驱动 | 升级打脸 | 感情线推进 |
 | 评测重点 | 反派智慧/金手指 | 男性角色独立性 |
-| 评测 Agents | 通用 INDEX 13 个 | 通用 INDEX + 女频专项 INDEX（4 个） |
+| 评测 Agents | 通用 INDEX 13 个 + 男频专项 INDEX | 通用 INDEX + 女频专项 INDEX（4 个） |
 
 ---
 
@@ -162,6 +163,8 @@ description: Use when user wants to create AI-assisted web novels, including mal
 评测维度清单见 `shared/agents/review/INDEX.md`（共 13 个跨题材 Agent）。如发现新增维度，请同步更新该 INDEX。
 
 女频专项评测清单见 `female/agents/review/INDEX.md`。
+
+男频专项评测清单见 `male/agents/review/INDEX.md`。
 
 ---
 
