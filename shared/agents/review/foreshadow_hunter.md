@@ -174,28 +174,12 @@
 
 ## 查询示例
 
-```sql
--- 获取框架中的伏笔设定
-SELECT * FROM frameworks WHERE novel_id = ? AND type = 'foreshadow';
+字段定义见 `shared/database/schema.sql`：
 
--- 获取角色身世设定
-SELECT name, background, motivation FROM characters WHERE id = ?;
-
--- 获取角色事件（检查行为一致性）
-SELECT ce.*, ch.chapter_number
-FROM character_events ce
-JOIN chapters ch ON ce.chapter_id = ch.id
-WHERE ce.character_id = ?
-ORDER BY ch.chapter_number;
-
--- 检查物品流转（道具伏笔）
-SELECT i.name, ie.event_type, ie.to_holder, ch.chapter_number
-FROM item_events ie
-JOIN items i ON ie.item_id = i.id
-JOIN chapters ch ON ie.chapter_id = ch.id
-WHERE i.novel_id = ?
-ORDER BY ch.chapter_number;
-```
+- 框架中的伏笔：`frameworks`（`type = 'foreshadow'`）
+- 角色身世：`characters`（`name, background, motivation`）
+- 角色事件（行为一致性）：`character_events` JOIN `chapters`（按 `chapter_number`）
+- 物品流转（道具伏笔）：`item_events` JOIN `items` JOIN `chapters`（按 `chapter_number`）
 
 ## 伏笔设计原则速查
 

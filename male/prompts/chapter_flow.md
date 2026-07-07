@@ -3,73 +3,25 @@
 ## 创作前准备（必须执行）
 
 ### 【新写模式 - 必要表查询】
+首次创作新章节时，必须查询以下表（字段定义见 `shared/database/schema.sql`）：
 
-首次创作新章节时，必须查询以下表：
-
-```sql
--- 1. 查询小说基本信息
-SELECT * FROM novels WHERE id = ?;
-
--- 2. 查询核心角色设定
-SELECT * FROM characters
-WHERE novel_id = ? AND role_type IN ('protagonist', 'antagonist');
-
--- 3. 查询势力状态
-SELECT * FROM factions WHERE novel_id = ?;
-
--- 4. 查询物品状态
-SELECT i.*, c.name as holder_name
-FROM items i
-LEFT JOIN characters c ON i.current_holder = c.id
-WHERE i.novel_id = ?;
-
--- 5. 查询世界观框架
-SELECT * FROM frameworks
-WHERE novel_id = ? AND type LIKE '%world%';
-
--- 6. 查询已确定的情节节点
-SELECT * FROM frameworks
-WHERE novel_id = ? AND type LIKE '%plot%';
-```
+- `novels`：小说基本信息
+- `characters`：核心角色设定（`role_type IN ('protagonist', 'antagonist')`）
+- `factions`：势力状态
+- `items`（JOIN `characters`）：物品状态及持有人
+- `frameworks`：世界观框架（`type LIKE '%world%'`）
+- `frameworks`：已确定的情节节点（`type LIKE '%plot%'`）
 
 ### 【续写模式 - 必须执行】
 
 从第2章开始续写时，必须执行全量查询确保衔接：
 
-```sql
--- 1. 查询最近10章概要
-SELECT chapter_number, title, summary, key_events
-FROM chapters
-WHERE novel_id = ?
-ORDER BY chapter_number DESC
-LIMIT 10;
-
--- 2. 查询角色当前状态
-SELECT name, status, current_location, abilities
-FROM characters WHERE novel_id = ?;
-
--- 3. 查询角色历史事件
-SELECT ce.*, c.name
-FROM character_events ce
-JOIN characters c ON ce.character_id = c.id
-WHERE c.novel_id = ?
-ORDER BY ce.created_at DESC
-LIMIT 30;
-
--- 4. 查询势力状态
-SELECT * FROM factions WHERE novel_id = ?;
-
--- 5. 查询物品状态
-SELECT i.*, c.name as holder_name
-FROM items i
-LEFT JOIN characters c ON i.current_holder = c.id
-WHERE i.novel_id = ?;
-
--- 6. 查询待回收伏笔
-SELECT * FROM frameworks
-WHERE novel_id = ? AND category = 'foreshadow'
-AND status = 'pending';
-```
+- `chapters`：最近10章概要（按 `chapter_number DESC LIMIT 10`）
+- `characters`：角色当前状态（`name, status, current_location, abilities`）
+- `character_events` + `characters`：最近30条角色事件
+- `factions`：势力状态
+- `items`（JOIN `characters`）：物品状态及持有人
+- `frameworks`：待回收伏笔（`category='foreshadow' AND status='pending'`）
 
 ### 【数据库状态确认】
 
@@ -257,14 +209,11 @@ AND status = 'pending';
 
 ## 反派塑造质量标记
 
-这些字段已在 database/schema.sql 中定义：
-
-```sql
--- chapters.antagonist_quality: intelligent/average/brainless
--- feedbacks.feedback_type 可选值：antagonist_stupid（反派无脑）
-```
+字段定义见 `shared/database/schema.sql`：
+- `chapters.antagonist_quality`：`intelligent` / `average` / `brainless`
+- `feedbacks.feedback_type` 可选值：`antagonist_stupid`（反派无脑）
 
 **使用说明：**
 - 创作时记录反派嘲讽方式
 - 评测时评估反派是否有智慧
-- 如有"无脑嘲讽"倾向，标记为brainless
+- 如有"无脑嘲讽"倾向，标记为 `brainless`

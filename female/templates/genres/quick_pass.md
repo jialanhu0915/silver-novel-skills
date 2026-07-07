@@ -278,93 +278,11 @@
 
 ---
 
-## 数据库 Schema (SQL)
+## 数据库 Schema
 
-### Quick Pass Worlds Table
-
-```sql
-CREATE TABLE quick_pass_worlds (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    novel_id INTEGER NOT NULL,
-    world_name VARCHAR(100) NOT NULL,
-    world_type VARCHAR(50) NOT NULL,
-    world_order INTEGER NOT NULL,
-    missions TEXT NOT NULL,
-    mission_type VARCHAR(50),
-    completion_status VARCHAR(20) DEFAULT '进行中', -- 进行中/已完成/失败
-    protagonist_status VARCHAR(100),
-    love_interest VARCHAR(100),
-    love_interest_archetype VARCHAR(50),
-    romance_progress VARCHAR(20) DEFAULT '未开始', -- 未开始/暧昧中/已攻略/失败
-    key_conflicts TEXT,
-    end_condition VARCHAR(200),
-    rewards TEXT,
-    world_notes TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (novel_id) REFERENCES novels(id)
-);
-```
-
-### Novel Main Table Extension
-
-```sql
-CREATE TABLE novels (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title VARCHAR(200) NOT NULL,
-    genre VARCHAR(50) DEFAULT '快穿/穿书',
-    sub_type VARCHAR(50),
-    system_type VARCHAR(50),
-    mission_type VARCHAR(50),
-    difficulty_level VARCHAR(20),
-    romance_carry_over BOOLEAN DEFAULT FALSE,
-    character_carry_over BOOLEAN DEFAULT FALSE,
-    total_worlds INTEGER,
-    current_world INTEGER DEFAULT 1,
-    protagonist_name VARCHAR(100),
-    protagonist_personality TEXT,
-    system_entity_description TEXT,
-    user_defined_tasks TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### Character Relationships Table
-
-```sql
-CREATE TABLE quick_pass_characters (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    world_id INTEGER NOT NULL,
-    character_name VARCHAR(100) NOT NULL,
-    character_role VARCHAR(50), -- 男主/男配/女主/女配/反派/路人
-    archetype VARCHAR(50),
-    is_main_love_interest BOOLEAN DEFAULT FALSE,
-    personality_traits TEXT,
-    background_story TEXT,
-    relationship_with_protagonist VARCHAR(50), -- 陌生/相识/暧昧/恋人/仇人
-    romance_progress VARCHAR(20), -- 好感度数值或状态
-    key_events TEXT,
-    ending_status VARCHAR(20), -- 幸福/悲剧/开放/独美
-    FOREIGN KEY (world_id) REFERENCES quick_pass_worlds(id)
-);
-```
-
-### Mission Progress Table
-
-```sql
-CREATE TABLE mission_progress (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    world_id INTEGER NOT NULL,
-    mission_name VARCHAR(200) NOT NULL,
-    mission_description TEXT,
-    mission_status VARCHAR(20) DEFAULT '未完成', -- 未完成/进行中/已完成/失败
-    completion_criteria TEXT,
-    current_progress VARCHAR(100),
-    rewards TEXT,
-    hints TEXT,
-    FOREIGN KEY (world_id) REFERENCES quick_pass_worlds(id)
-);
-```
+> 字段定义见 `shared/database/schema.sql`
+> - 核心表：`quick_pass_worlds`、`quick_pass_characters`、`mission_progress`
+> - 扩展字段：`novels` 表的快穿/穿书专用字段
 
 ---
 

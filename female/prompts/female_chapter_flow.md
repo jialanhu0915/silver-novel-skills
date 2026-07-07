@@ -10,57 +10,22 @@
 
 ### 【新写模式 - 必要表查询】
 
-首次创作新章节时，必须查询以下表：
+首次创作新章节时，必须查询以下表（字段定义见 `shared/database/schema.sql`）：
 
-```sql
--- 1. 查询小说基本信息
-SELECT * FROM novels WHERE id = ?;
-
--- 2. 查询核心角色设定
-SELECT * FROM characters
-WHERE novel_id = ? AND role_type IN ('protagonist', 'female_lead', 'antagonist');
-
--- 3. 查询世界观框架
-SELECT * FROM frameworks
-WHERE novel_id = ? AND type LIKE '%world%';
-
--- 4. 查询已确定的情节节点
-SELECT * FROM frameworks
-WHERE novel_id = ? AND type LIKE '%plot%';
-```
+- `novels`：小说基本信息
+- `characters`：核心角色设定（`role_type IN ('protagonist', 'female_lead', 'antagonist')`）
+- `frameworks`：世界观框架（`type LIKE '%world%'`）
+- `frameworks`：已确定的情节节点（`type LIKE '%plot%'`）
 
 ### 【续写模式 - 必须执行】
 
 从第2章开始续写时，必须查询以下表确保衔接：
 
-```sql
--- 1. 查询最近10章概要
-SELECT chapter_number, title, summary, key_events, relationship_stage
-FROM chapters
-WHERE novel_id = ?
-ORDER BY chapter_number DESC
-LIMIT 10;
-
--- 2. 查询角色当前状态
-SELECT name, status, current_location, relationships
-FROM characters WHERE novel_id = ?;
-
--- 3. 查询待回收伏笔
-SELECT * FROM frameworks
-WHERE novel_id = ? AND category = 'foreshadow'
-AND status = 'pending';
-
--- 4. 查询感情线状态
-SELECT * FROM romance_lines WHERE novel_id = ?;
-
--- 5. 查询角色历史事件
-SELECT ce.*, c.name
-FROM character_events ce
-JOIN characters c ON ce.character_id = c.id
-WHERE c.novel_id = ?
-ORDER BY ce.created_at DESC
-LIMIT 20;
-```
+- `chapters`：最近10章概要（按 `chapter_number DESC LIMIT 10`）
+- `characters`：角色当前状态（`name, status, current_location, relationships`）
+- `frameworks`：待回收伏笔（`category='foreshadow' AND status='pending'`）
+- `romance_lines`：感情线状态
+- `character_events` + `characters`：角色最近20条历史事件
 
 ### 【数据库状态确认】
 
@@ -291,20 +256,11 @@ Chapter X: 关键事件
 
 ---
 
-## 七、SQL记录格式
+## 七、章节记录字段
 
-### 字段说明
+> 字段定义见 `shared/database/schema.sql`（表名：`chapters`）
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| novel_id | INT | 小说ID |
-| title | VARCHAR(200) | 章节标题 |
-| chapter_number | INT | 章节序号 |
-| word_count | INT | 字数 |
-| protagonist_type | ENUM | 'single', 'dual', 'ensemble' |
-| relationship_stage | VARCHAR(50) | 当前关系阶段 |
-| sweet_level | INT (1-5) | 甜度等级 |
-| conflict_level | INT (1-5) | 冲突等级 |
+核心字段：`novel_id`、`title`、`chapter_number`、`word_count`、`protagonist_type`、`relationship_stage`、`sweet_level`、`conflict_level`
 
 ---
 

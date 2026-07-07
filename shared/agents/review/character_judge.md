@@ -105,24 +105,11 @@
 
 ## 查询示例
 
-```sql
--- 获取角色完整设定（包括反派类型）
-SELECT c.*, f.content as antagonist_notes
-FROM characters c
-LEFT JOIN frameworks f ON f.character_id = c.id
-WHERE c.id = ?;
+字段定义见 `shared/database/schema.sql`：
 
--- 获取反派类型
-SELECT * FROM characters
-WHERE novel_id = ? AND role_type = 'antagonist';
-
--- 获取角色所有事件（按时间线）
-SELECT ce.*, ch.title, ch.chapter_number
-FROM character_events ce
-JOIN chapters ch ON ce.chapter_id = ch.id
-WHERE ce.character_id = ?
-ORDER BY ch.chapter_number, ce.event_order;
-```
+- 角色完整设定：`characters` LEFT JOIN `frameworks`（按 `character_id`）
+- 反派类型：`characters`（`role_type = 'antagonist'`）
+- 角色事件（按时间线）：`character_events` JOIN `chapters`（按 `chapter_number, event_order`）
 
 ## 评分标准
 

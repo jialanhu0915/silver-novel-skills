@@ -203,22 +203,7 @@
 
 ## 6. 关系发展追踪
 
-```sql
-CREATE TABLE dual_relationships (
-    id INTEGER PRIMARY KEY,
-    protagonist_a_id INTEGER NOT NULL,
-    protagonist_b_id INTEGER NOT NULL,
-    relationship_stage VARCHAR(50)
-        CHECK (relationship_stage IN (
-            '初识', '暧昧', '确认', '深化', '危机', '升华'
-        )),
-    tension_level INTEGER CHECK (tension_level BETWEEN 1 AND 10),
-    equality_level VARCHAR(20)
-        CHECK (equality_level IN ('equal', 'complementary', 'unequal')),
-    conflict_points TEXT,
-    UNIQUE(protagonist_a_id, protagonist_b_id)
-);
-```
+> 字段定义见 `shared/database/schema.sql`（表名：`dual_relationships`）
 
 ---
 

@@ -176,20 +176,11 @@
 
 ## 查询示例
 
-```sql
--- 获取章节信息
-SELECT chapter_number, title, word_count, summary
-FROM chapters WHERE id = ?;
+字段定义见 `shared/database/schema.sql`：
 
--- 获取章节剧情概要
-SELECT plot_progression FROM chapters WHERE id = ?;
-
--- 检查前后章节节奏
-SELECT chapter_number, title, word_count
-FROM chapters
-WHERE novel_id = ? AND chapter_number BETWEEN ? AND ?
-ORDER BY chapter_number;
-```
+- 章节信息：`chapters`（`chapter_number, title, word_count, summary`）
+- 章节剧情概要：`chapters.plot_progression`
+- 前后章节节奏：`chapters`（`chapter_number BETWEEN ? AND ? ORDER BY chapter_number`）
 
 ## 设计原则速查
 

@@ -218,21 +218,7 @@
 
 ## 6. 感情线追踪
 
-### 数据库架构
-
-```sql
-CREATE TABLE romance_lines (
-    id INTEGER PRIMARY KEY,
-    novel_id INTEGER,
-    character_pair VARCHAR(100),
-    current_stage VARCHAR(50),
-    tension_level INTEGER,
-    sweet_level INTEGER,
-    conflict_level INTEGER,
-    last_development VARCHAR(200),
-    next_target VARCHAR(200)
-);
-```
+> 字段定义见 `shared/database/schema.sql`（表名：`romance_lines`）
 
 ### 阶段指标
 

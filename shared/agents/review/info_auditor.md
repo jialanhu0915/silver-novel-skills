@@ -224,19 +224,12 @@
 
 ## 查询示例
 
-```sql
--- 获取世界观设定
-SELECT * FROM frameworks WHERE novel_id = ? AND type = 'world_structure';
+字段定义见 `shared/database/schema.sql`：
 
--- 获取势力设定
-SELECT * FROM factions WHERE novel_id = ?;
-
--- 获取角色背景
-SELECT name, background, relationships FROM characters WHERE novel_id = ?;
-
--- 获取力量体系
-SELECT * FROM frameworks WHERE novel_id = ? AND type = 'power_system';
-```
+- 世界观设定：`frameworks`（`type = 'world_structure'`）
+- 势力设定：`factions`
+- 角色背景：`characters`（`name, background, relationships`）
+- 力量体系：`frameworks`（`type = 'power_system'`）
 
 ## 好的信息传递速查
 

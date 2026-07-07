@@ -53,16 +53,11 @@
 
 ## 查询示例
 
-```sql
--- 检查角色状态
-SELECT * FROM characters WHERE id = ?;
+字段定义见 `shared/database/schema.sql`：
 
--- 检查物品流转
-SELECT * FROM item_events WHERE item_id = ? ORDER BY created_at;
-
--- 检查势力关系
-SELECT * FROM factions WHERE novel_id = ?;
-```
+- 角色状态：`characters`
+- 物品流转：`item_events`（按 `created_at`）
+- 势力关系：`factions`
 
 ## 评分标准
 

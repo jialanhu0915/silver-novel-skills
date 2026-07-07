@@ -140,27 +140,11 @@
 - 是否与前文风格一致
 
 **续写前必须查询：**
-```sql
--- 获取最近10章概要
-SELECT chapter_number, title, summary, key_events
-FROM chapters
-WHERE novel_id = ?
-ORDER BY chapter_number DESC
-LIMIT 10;
-
--- 获取角色当前状态
-SELECT name, status, updated_at
-FROM characters
-WHERE novel_id = ?;
-
--- 获取待回收伏笔
-SELECT * FROM frameworks
-WHERE novel_id = ? AND category = 'foreshadow'
-AND status = 'pending';
-
--- 获取感情线状态（如女频）
-SELECT * FROM romance_lines WHERE novel_id = ?;
-```
+> 字段定义见 `shared/database/schema.sql`
+- `chapters`：最近10章概要（按 `chapter_number DESC LIMIT 10`）
+- `characters`：当前状态（`name, status, updated_at`）
+- `frameworks`：待回收伏笔（`category='foreshadow' AND status='pending'`）
+- `romance_lines`：感情线状态（女频）
 
 ## 输出格式
 
