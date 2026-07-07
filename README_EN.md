@@ -15,7 +15,7 @@ AI-powered novel writing system with full support for male-oriented and female-o
 
 | System | Target Audience | Supported Genres |
 |--------|-----------------|------------------|
-| Male-Oriented | Male readers | Xuanhuan, Xianxia, Urban, Mystery, Sci-Fi, Gaming, Historical, Urban Fantasy, Transmigration, Horror, Cosmic Horror, Entertainment |
+| Male-Oriented | Male readers | Xuanhuan, Xianxia, Urban, Mystery, Sci-Fi, Gaming, Historical, Urban Fantasy, Transmigration, Horror, Cosmic Horror, DND Fantasy, Entertainment |
 | Female-Oriented | Female readers | Romance, Boys' Love, Girls' Love, Female Dominance, Quick Pass, Mystery Romance, Ancient Romance, Female Xianxia |
 
 ### Framework Agents
@@ -133,7 +133,7 @@ silver-novel-skills
 │   │   ├── climax_design.md
 │   │   ├── antagonist_face_slapping.md
 │   │   ├── female_characters.md
-│   │   └── genres/                # Genre-specific (12 genres)
+│   │   └── genres/                # Genre-specific (13 genres)
 │   │       ├── xuanhuan.md
 │   │       ├── xianxia.md
 │   │       ├── dushi.md
@@ -145,7 +145,8 @@ silver-novel-skills
 │   │       ├── transmigration.md
 │   │       ├── horror.md
 │   │       ├── entertainment.md
-│   │       └── cosmic_horror.md
+│   │       ├── cosmic_horror.md
+│   │       └── dnd.md
 │   └── prompts/                    # Writing flow prompts
 │
 ├── female/                         # Female-oriented system
