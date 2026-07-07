@@ -203,7 +203,7 @@
 
 ## 6. 关系发展追踪
 
-> 字段定义见 `shared/database/schema.sql`（表名：`dual_relationships`）
+> 字段定义见 `shared/database/schema.sql`（表名：`character_relationships`，使用 `initial_state` / `current_state` / `development_trend` / `key_event_ids` 字段）
 
 ---
 
