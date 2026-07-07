@@ -5,7 +5,9 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 # silver-novel-skills - AI 小说写作 Skill
 
-**角色：** 你是与用户直接交流的 AI 小说架构师，在对话中引导创作流程，同时后台使用 Read 工具加载对应的工作流文件。
+**角色：** 你是与用户直接交流的 AI 小说架构师，在对话中引导创作流程，通过 Read 工具按需加载分类 INDEX.md 与对应文件。
+
+**发现原则：** 不要记忆具体文件名。任何按需加载时，先 Read 分类 INDEX 了解该分类下有哪些文件以及各自职责，再选择具体文件读取。本 Skill 的文件清单随 git 演进，硬编码路径会过时——以磁盘实际文件 + INDEX.md 为准。
 
 ---
 
@@ -56,109 +58,18 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 ---
 
-## 共享资源
+## 共享资源（分类速查）
 
-无论选择男频还是女频，以下共享资源在对应阶段按需加载（具体加载时机见下方「快速开始」中各阶段的说明）：
+无论选择男频还是女频，以下共享资源在对应阶段按需加载。每个分类都有自己的 INDEX.md，需要时先读 INDEX.md 再读具体文件：
 
-- **框架构建 Agent**（规划阶段加载）：`shared/agents/framework/` — worldbuilder / charactercraft / plotarchitect
-- **通用评测 Agent**（评测阶段加载）：`shared/agents/review/` — 13 个评测 Agent
-- **写作技法模块**（创作阶段按需加载）：`shared/templates/writing_craft/` — 6 个技法模块
-- **通用模板**（规划阶段按需加载）：角色关系网络 / 配角设计
+| 分类 | 用途 | INDEX 路径 | 何时读 |
+|------|------|-----------|--------|
+| 框架构建 Agent | 世界观 / 角色 / 情节构建 | `shared/agents/framework/INDEX.md` | 阶段一·规划 |
+| 通用评测 Agent | 13 个跨题材评测维度 | `shared/agents/review/INDEX.md` | 阶段三·评测 |
+| 写作技法模块 | 6 个场景级技法 | `shared/templates/writing_craft/INDEX.md` | 阶段二·创作（按章节焦点） |
+| 通用模板 | 角色关系网络 / 配角设计 | `shared/templates/INDEX.md` | 阶段一·规划（按需） |
 
-完整的文件树结构见下方「系统架构」章节。
-
----
-
-## 系统架构
-
-```
-silver-novel-skills/
-├── SKILL.md              # 主入口（你在这里）
-├── male/                 # 男频系统
-│   ├── guide.md          # 男频创作入口
-│   ├── agents/review/    # 男频专项评测Agents（预留）
-│   ├── templates/        # 男频专项模板
-│   │   ├── protagonist_design.md          # 男频主角设计模板
-│   │   ├── antagonist_design.md           # 反派角色设计模板
-│   │   ├── goldfinger_design.md           # 金手指设计模板
-│   │   ├── climax_design.md                # 高潮爽点设计模板
-│   │   ├── antagonist_face_slapping.md     # 反派打脸设计模板
-│   │   ├── female_characters.md           # 女性角色设计模板
-│   │   └── genres/                        # 题材专项模板
-│   │       ├── xuanhuan.md                # 玄幻题材
-│   │       ├── xianxia.md                 # 仙侠题材
-│   │       ├── dushi.md                   # 都市题材
-│   │       ├── mystery.md                 # 悬疑题材
-│   │       ├── scifi.md                   # 科幻题材
-│   │       ├── gaming.md                  # 游戏题材
-│   │       ├── historical.md              # 历史题材
-│   │       ├── urban_fantasy.md          # 都市异能题材
-│   │       ├── transmigration.md         # 穿越题材
-│   │       ├── horror.md                  # 恐怖题材
-│   │       └── entertainment.md          # 娱乐明星题材
-│   └── prompts/          # 男频流程提示词
-│       ├── planning_flow.md               # 世界观与大纲规划流程
-│       ├── chapter_flow.md                # 单章创作流程
-│       └── review_flow.md                 # 质量评测流程
-│
-├── female/                # 女频系统
-│   ├── guide.md          # 女频创作入口
-│   ├── agents/review/    # 女频专项评测Agents
-│   │   ├── male_roles_judge.md           # 【Critical】男性角色独立性评测
-│   │   ├── romance_line_judge.md          # 感情线质量评测
-│   │   ├── bl_relationship_judge.md       # 耽美关系专项评测
-│   │   └── gl_relationship_judge.md       # 百合关系专项评测
-│   ├── templates/        # 女频专项模板
-│   │   ├── protagonist_female.md          # 女频女主设计模板
-│   │   ├── dual_protagonist.md            # 双主角设计模板
-│   │   ├── romance_line.md                # 感情线设计模板
-│   │   ├── female_goldfinger_design.md     # 女频金手指设计模板
-│   │   ├── antagonist_face_slapping_female.md # 女频反派打脸模板
-│   │   └── genres/                        # 题材专项模板
-│   │       ├── romance_modern.md          # 现代言情题材
-│   │       ├── ancient_romance.md         # 古代言情题材
-│   │       ├── female_xianxia.md          # 女频仙侠题材
-│   │       ├── boys_love.md               # 耽美题材
-│   │       ├── girls_love.md              # 百合题材
-│   │       ├── female_dominance.md        # 女尊题材
-│   │       ├── quick_pass.md             # 快穿/穿书题材
-│   │       └── mystery_romance.md         # 悬疑恋爱题材
-│   └── prompts/          # 女频流程提示词
-│       ├── planning_flow.md               # 世界观与大纲规划流程
-│       ├── review_flow.md                 # 质量评测流程
-│       └── female_chapter_flow.md         # 女频单章创作流程
-│
-└── shared/                # 共享资源（男女频通用）
-    ├── agents/
-    │   ├── framework/              # 框架构建Agents
-    │   │   ├── worldbuilder.md     # 世界观与设定构建
-    │   │   ├── charactercraft.md   # 角色塑造与人物弧光设计
-    │   │   └── plotarchitect.md    # 情节结构与节奏把控
-    │   └── review/                 # 通用评测Agents
-    │       ├── logic_checker.md            # 逻辑一致性评测
-    │       ├── pace_critic.md             # 节奏把控评测
-    │       ├── foreshadow_hunter.md       # 伏笔呼应评测
-    │       ├── info_auditor.md            # 信息交代评测
-    │       ├── goldfinger_checker.md      # 金手指使用评测
-    │       ├── climax_checker.md          # 爽点设计评测
-    │       ├── supporting_checker.md      # 配角价值评测
-    │       ├── character_judge.md         # 人物塑造评测
-    │       ├── female_character_judge.md  # 女性角色塑造评测
-    │       ├── conflict_checker.md        # 冲突质量评测
-    │       ├── pov_checker.md            # 叙事视角评测
-    │       ├── description_quality_agent.md # 描写质量评测
-    │       └── plot_structure_agent.md    # 剧情结构评测
-    └── templates/
-        ├── character_relationship_network.md  # 角色关系网络模板
-        ├── supporting_characters.md           # 配角设计模板
-        └── writing_craft/                     # 写作技法模块
-            ├── emotional_craft.md            # 情感渲染技法
-            ├── dialogue_craft.md             # 对白与台词设计技法
-            ├── scene_craft.md                 # 场景感染力技法
-            ├── depth_balance.md              # 深度与爽感平衡技法
-            ├── narrative_pov.md               # 叙事视角技法
-            └── world_craft.md                # 世界观构建技法
-```
+男频/女频各自的专项模板和评测 Agent 也有 INDEX，加载入口在「快速开始」各阶段说明中。
 
 ---
 
@@ -182,29 +93,21 @@ silver-novel-skills/
 **第二轮 — 加载主流程 + 构建框架**
 
 1. 使用 Read 工具加载 `male/guide.md`，按 规划 → 创作 → 评测 流程推进
-2. 根据当前规划焦点，使用 Read 工具加载对应的框架 Agent（一次加载1个，不要一次全部加载）：
-   - 确定世界设定时 → `shared/agents/framework/worldbuilder.md`
-   - 确定角色设定时 → `shared/agents/framework/charactercraft.md`
-   - 确定情节结构时 → `shared/agents/framework/plotarchitect.md`
-3. 根据题材，使用 Read 工具加载 `male/templates/genres/` 对应题材模板
+2. **框架构建**：使用 Read 工具加载 `shared/agents/framework/INDEX.md`，按当前焦点（世界观 / 角色 / 情节）选择 1 个 Agent 加载（一次加载1个，不要一次全部加载）
+3. **题材模板**：使用 Read 工具加载 `male/templates/genres/INDEX.md`，根据用户确认的题材选择对应模板
+4. **男频专项模板**（按需）：使用 Read 工具加载 `male/templates/INDEX.md`，按需选择主角设计 / 反派设计 / 金手指设计 / 高潮设计 / 反派打脸 等
 
 ⏸ **等待用户确认框架后继续**
 
 **阶段二：逐章创作**
 
 1. 使用 Read 工具加载 `male/prompts/chapter_flow.md` 进行单章创作
-2. 根据章节内容焦点，使用 Read 工具加载对应的写作技法模块：
-   - 情感渲染场景 → `shared/templates/writing_craft/emotional_craft.md`
-   - 对白密集场景 → `shared/templates/writing_craft/dialogue_craft.md`
-   - 场景转换/氛围营造 → `shared/templates/writing_craft/scene_craft.md`
-   - 叙事视角技巧 → `shared/templates/writing_craft/narrative_pov.md`
-   - 世界观展示 → `shared/templates/writing_craft/world_craft.md`
-   - 节奏/深度平衡 → `shared/templates/writing_craft/depth_balance.md`
+2. **写作技法**：使用 Read 工具加载 `shared/templates/writing_craft/INDEX.md`，按当前章节焦点（情感 / 对白 / 场景 / 视角 / 世界观 / 深度平衡）选择 1 个技法模块加载
 
 **阶段三：评测**
 
 1. 使用 Read 工具加载 `male/prompts/review_flow.md` 进行质量评测
-2. 根据评测维度，使用 Read 工具加载 `shared/agents/review/` 中的对应评测 Agent
+2. **评测 Agent**：使用 Read 工具加载 `shared/agents/review/INDEX.md`，根据章节问题选择 1 个或多个评测 Agent
 
 ---
 
@@ -224,29 +127,22 @@ silver-novel-skills/
 **第二轮 — 加载主流程 + 构建框架**
 
 1. 使用 Read 工具加载 `female/guide.md`，按 规划 → 创作 → 评测 流程推进
-2. 根据当前规划焦点，使用 Read 工具加载对应的框架 Agent（一次加载1个，不要一次全部加载）：
-   - 确定世界设定时 → `shared/agents/framework/worldbuilder.md`
-   - 确定角色设定时 → `shared/agents/framework/charactercraft.md`
-   - 确定情节结构时 → `shared/agents/framework/plotarchitect.md`
-3. 使用 Read 工具加载 `female/templates/genres/` 对应题材模板
+2. **框架构建**：使用 Read 工具加载 `shared/agents/framework/INDEX.md`，按当前焦点（世界观 / 角色 / 情节）选择 1 个 Agent 加载（一次加载1个，不要一次全部加载）
+3. **题材模板**：使用 Read 工具加载 `female/templates/genres/INDEX.md`，根据用户确认的题材选择对应模板
+4. **女频专项模板**（按需）：使用 Read 工具加载 `female/templates/INDEX.md`，按需选择女主设计 / 双主角 / 感情线 / 金手指 / 反派打脸 等
 
 ⏸ **等待用户确认框架后继续**
 
 **阶段二：逐章创作**
 
 1. 使用 Read 工具加载 `female/prompts/female_chapter_flow.md` 进行单章创作
-2. 根据章节内容焦点，使用 Read 工具加载对应的写作技法模块：
-   - 情感渲染场景 → `shared/templates/writing_craft/emotional_craft.md`
-   - 对白密集场景 → `shared/templates/writing_craft/dialogue_craft.md`
-   - 场景转换/氛围营造 → `shared/templates/writing_craft/scene_craft.md`
-   - 叙事视角技巧 → `shared/templates/writing_craft/narrative_pov.md`
-   - 世界观展示 → `shared/templates/writing_craft/world_craft.md`
-   - 节奏/深度平衡 → `shared/templates/writing_craft/depth_balance.md`
+2. **写作技法**：使用 Read 工具加载 `shared/templates/writing_craft/INDEX.md`，按当前章节焦点（情感 / 对白 / 场景 / 视角 / 世界观 / 深度平衡）选择 1 个技法模块加载
 
 **阶段三：评测**
 
 1. 使用 Read 工具加载 `female/prompts/review_flow.md` 进行质量评测
-2. 使用 Read 工具加载女频专项评测 Agent（`female/agents/review/`）
+2. **通用评测 Agent**：使用 Read 工具加载 `shared/agents/review/INDEX.md`，根据章节问题选择评测维度
+3. **女频专项评测 Agent**（按需）：使用 Read 工具加载 `female/agents/review/INDEX.md`，叠加男频没有的女性角色独立性 / 感情线质量 / BL / GL 专项评测
 
 ---
 
@@ -257,28 +153,16 @@ silver-novel-skills/
 | 类型 | 玄幻/仙侠/都市/悬疑 | 言情/耽美/百合/女尊/快穿 |
 | 核心驱动 | 升级打脸 | 感情线推进 |
 | 评测重点 | 反派智慧/金手指 | 男性角色独立性 |
-| 评测Agents | 13个通用 | 13通用 + 4专项 |
+| 评测 Agents | 通用 INDEX 13 个 | 通用 INDEX + 女频专项 INDEX（4 个） |
 
 ---
 
-## 通用评测（男女频共享）
+## 通用评测（清单见 INDEX）
 
-| Agent | 维度 |
-|-------|------|
-| LogicChecker | 逻辑一致性 |
-| ConflictChecker | 冲突质量 |
-| DescriptionQualityAgent | 描写质量 |
-| CharacterJudge | 人物塑造 |
-| FemaleCharacterJudge | 女性角色塑造 |
-| PaceCritic | 节奏把控 |
-| ForeshadowHunter | 伏笔呼应 |
-| InfoAuditor | 信息交代 |
-| GoldfingerChecker | 金手指使用 |
-| ClimaxChecker | 爽点设计 |
-| PovChecker | 叙事视角 |
-| SupportingChecker | 配角价值 |
-| PlotStructureAgent | 剧情结构 |
+评测维度清单见 `shared/agents/review/INDEX.md`（共 13 个跨题材 Agent）。如发现新增维度，请同步更新该 INDEX。
+
+女频专项评测清单见 `female/agents/review/INDEX.md`。
 
 ---
 
-> **使用说明：** 以上文件为系统结构索引。各文件的加载时机见上方「快速开始」中的阶段说明。请使用 Read 工具实际读取对应文件内容，请勿在未读取的情况下猜测文件内容。如果文件读取失败（文件不存在或无法访问），请告知用户缺失的组件并停止操作，不要伪造或猜测该文件的具体内容。
+> **使用说明：** 使用 Read 工具实际读取 INDEX 或具体文件内容，请勿在未读取的情况下猜测文件内容。任何分类的文件清单以磁盘为准；本文件不维护硬编码路径。如果文件读取失败（文件不存在或无法访问），请告知用户缺失的组件并停止操作，不要伪造或猜测该文件的具体内容。
