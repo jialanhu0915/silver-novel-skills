@@ -101,12 +101,12 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 **阶段二：逐章创作**
 
-1. 使用 Read 工具加载 `male/prompts/chapter_flow.md` 进行单章创作
+1. 使用 Read 工具加载 `male/prompts/INDEX.md`，选择单章创作流程（含反派塑造要求）
 2. **写作技法**：使用 Read 工具加载 `shared/templates/writing_craft/INDEX.md`，按当前章节焦点（情感 / 对白 / 场景 / 视角 / 世界观 / 深度平衡）选择 1 个技法模块加载
 
 **阶段三：评测**
 
-1. 使用 Read 工具加载 `male/prompts/review_flow.md` 进行质量评测
+1. 使用 Read 工具加载 `male/prompts/INDEX.md`，选择质量评测流程
 2. **评测 Agent**：使用 Read 工具加载 `shared/agents/review/INDEX.md`，根据章节问题选择 1 个或多个评测 Agent
 
 ---
@@ -135,12 +135,12 @@ description: Use when user wants to create AI-assisted web novels, including mal
 
 **阶段二：逐章创作**
 
-1. 使用 Read 工具加载 `female/prompts/female_chapter_flow.md` 进行单章创作
+1. 使用 Read 工具加载 `female/prompts/INDEX.md`，选择单章创作流程
 2. **写作技法**：使用 Read 工具加载 `shared/templates/writing_craft/INDEX.md`，按当前章节焦点（情感 / 对白 / 场景 / 视角 / 世界观 / 深度平衡）选择 1 个技法模块加载
 
 **阶段三：评测**
 
-1. 使用 Read 工具加载 `female/prompts/review_flow.md` 进行质量评测
+1. 使用 Read 工具加载 `female/prompts/INDEX.md`，选择质量评测流程
 2. **通用评测 Agent**：使用 Read 工具加载 `shared/agents/review/INDEX.md`，根据章节问题选择评测维度
 3. **女频专项评测 Agent**（按需）：使用 Read 工具加载 `female/agents/review/INDEX.md`，叠加男频没有的女性角色独立性 / 感情线质量 / BL / GL 专项评测
 
